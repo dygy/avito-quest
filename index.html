@@ -1,44 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Авито</title>
     <script src="index.js"></script>
-    <link href="style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
+
 <navbar>
-    <p>
-    <span id='feed' class="navbarContent"
+    <div id="menu">
+
+        <h4 id='feed' class="navbarContent"
       onmouseover="changeColor('feed','red')"
       onmouseout="changeColor('feed','black')">
-        <a>Объявления </a></span>
+        <a>Объявления </a></h4>
     <a>
-    <span   class="navbarContent"
+    <h4   class="navbarContent"
             id='shop'
             onmouseover='changeColor("shop","red")'
             onmouseout= ' changeColor("shop","black")'>
-        Магазины   </span>
+        Магазины   </h4>
     </a>
     <div> </div>
     <a>
-    <span   class="navbarContent"
+    <h4   class="navbarContent"
             id='business'
             onmouseover="changeColor('business','red')"
             onmouseout= "changeColor('business','black')">
-        Бизнес </span>
+        Бизнес </h4>
     </a>
     <div> </div>
     <a>
-    <span   class="navbarContent"
+    <h4   class="navbarContent"
             id='help'
             onmouseover="changeColor('help','red')"
-            onmouseout= "changeColor('help','black')">Помощь</span>
+            onmouseout= "changeColor('help','black')">Помощь</h4>
     </a>
-    <div> </div>
-    </p>
-</navbar>
+        <div> </div>
+    </div>
+    <div id="rightMenu">
+        <button class="btn flat">
+            Вход
+        </button>
 
+    </div>
+
+</navbar>
+<div class="heart"></div>
+<div class="wrap">
+    <div class="search">
+        <input type="text" class="searchTerm" placeholder="Например: ААААВТАМАБИЛЬ">
+        <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+</div>
+<div class="flexbox">
+    <div class="item">
+        <img src="http://placehold.it/240x150" alt="" />
+        <p>
+            Nulla pharetra porta sagittis. Mauris et suscipit diam. Sed sollicitudin, dui at vulputate varius, tellus nunc euismod eros, sed venenatis purus diam at eros.
+        </p>
+    </div>
+    <div class="item">
+        <img src="http://placehold.it/240x150" alt="" />
+        <p>
+            Nulla pharetra porta sagittis. Mauris et suscipit diam. Sed sollicitudin, dui at vulputate varius, tellus nunc euismod eros, sed venenatis purus diam at eros.
+        </p>
+    </div>
+    <div class="item">
+        <img src="http://placehold.it/240x150" alt="" />
+        <p>
+            Nulla pharetra porta sagittis. Mauris et suscipit diam. Sed sollicitudin, dui at vulputate varius, tellus nunc euismod eros, sed venenatis purus diam at eros.
+        </p>
+    </div>
+    <div class="item">
+        <img src="http://placehold.it/240x150" alt="" />
+        <p>
+            Nulla pharetra porta sagittis. Mauris et suscipit diam. Sed sollicitudin, dui at vulputate varius, tellus nunc euismod eros, sed venenatis purus diam at eros.
+        </p>
+    </div>
+    <div class="item">
+        <img src="http://placehold.it/240x150" alt="" />
+        <p>
+            Nulla pharetra porta sagittis. Mauris et suscipit diam. Sed sollicitudin, dui at vulputate varius, tellus nunc euismod eros, sed venenatis purus diam at eros.
+        </p>
+    </div>
+    <div class="item">
+        <img src="http://placehold.it/240x150" alt="" />
+        <p>
+            Nulla pharetra porta sagittis. Mauris et suscipit diam. Sed sollicitudin, dui at vulputate varius, tellus nunc euismod eros, sed venenatis purus diam at eros.
+        </p>
+    </div>
+</div>
 
 </body>
 </html>
