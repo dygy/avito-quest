@@ -45,27 +45,10 @@ navbar{
         font-size: 12px;
     }
     #feed{
-        width: 70px;!important;
+        width: 90px;!important;
     }
     #business{
-        width: 40px;!important;
-    }
-    #shop{
         width: 55px;!important;
-    }
-    #help{
-        width: 0;!important;
-    }
-}
-@media screen and (max-width: 425px) {
-    .navbarContent {
-        font-size: 10px;
-    }
-    #feed{
-        width: 62px;!important;
-    }
-    #business{
-        width: 35px;!important;
     }
     #shop{
         width: 60px;!important;
@@ -74,15 +57,50 @@ navbar{
         width: 0;!important;
     }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 465px) {
     .navbarContent {
-        font-size: 9px;
+        font-size: 11px;
     }
     #feed{
-        width: 57px;!important;
+        width: 70px;!important;
     }
     #business{
-        width: 32px;!important;
+        width: 40px;!important;
+    }
+    #shop{
+        width: 60px;!important;
+    }
+    #help{
+        width: 0;!important;
+    }
+}
+@media screen and (max-width: 380px) {
+    .navbarContent {
+        font-size: 10px;
+    }
+    #feed{
+        width: 65px;!important;
+    }
+    #business{
+        width: 38px;!important;
+    }
+    #shop{
+        width: 49px;!important;
+    }
+    #help{
+        width: 0;!important;
+    }
+}
+@media (max-width: 353px) {
+    .navbarContent {
+        font-size: 9px;
+        font-weight: 900;
+    }
+    #feed{
+        width: 63px;!important;
+    }
+    #business{
+        width: 40px;!important;
     }
     #shop{
         width: 45px;!important;
@@ -91,15 +109,15 @@ navbar{
         width: 0;!important;
     }
 }
-@media (max-width: 300px) {
+@media (max-width: 343px) {
     .navbarContent {
         font-size: 8px;
     }
     #feed{
-        width: 50px;!important;
+        width: 60px;!important;
     }
     #business{
-        width: 27px;!important;
+        width: 36px;!important;
     }
     #shop{
         width: 40px;!important;
