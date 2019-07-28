@@ -1,11 +1,16 @@
 myStorage = localStorage;
-console.log(myStorage.getItem('favor'))
+let favorIndex;
+if (myStorage.getItem('favorIndex')===undefined||myStorage.getItem('favorIndex')===null){
+    myStorage.setItem('favorIndex',0);
+    favorIndex=0
+}else {
+    favorIndex = myStorage.getItem('favorIndex')
+}
+console.log(myStorage);
 const flexbox = document.getElementsByClassName('flexbox')[0]
-console.log(flexbox);
 const changeColor = (id, color) =>{
     document.getElementById(id).style.color = color
 };
-document.write(window.innerWidth+' '+window.outerWidth);
 const toDarkMode = () =>{
 
 };
@@ -39,13 +44,19 @@ let createPost = (name, city, price, photo, type)=> {
 for (let x=0 ;x<8;x++){
     createPost('Avtamabil','Moskva','700 000','./imgs/autonews2-tnnw.jpg','Auto')
 }
-
 let addToFavor=(param)=>{
-    myStorage.setItem('favor',JSON.stringify(posts[param.path[0].className[param.path[0].className.length-1]]));
-    console.log(param.path[0].className[param.path[0].className.length-1]);
-    console.log(myStorage.getItem('favor'))
+    console.log(favorIndex);
+    myStorage.setItem('favor'+favorIndex,JSON.stringify(posts[param.path[0].className[param.path[0].className.length-1]]));
+   // console.log(param.path[0].className[(param.path[0].className.length-1)]);
+   // console.log(myStorage.getItem('favor'+favorIndex));
+    favorIndex++;
+    myStorage.setItem('favorIndex',favorIndex)
 };
-
+let showFavor = () =>{
+    for (let x=0;x<favorIndex;x++){
+        console.log(myStorage.getItem('favor'+x))
+    }
+};
 for (let x=0;x<posts.length;x++){
     const node = document.createElement("div");                 // Create a <li> node
     node.className ='item '+posts[x].type;
