@@ -1,16 +1,22 @@
-
+#header{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100px;
+}
 navbar{
     position: fixed;
     top: 0;
     width: 100%;
     height: 60px;
-    background-color: #a59695;
-
-
+    background-color:#FAF5FF;
+    z-index: 2;
+    border-bottom: 1px #000000 dashed ;
 }
 #auth{
     width: 300px;!important;
 }
+
 #menu{
     width: 100%;
     min-height: 100%;
@@ -23,17 +29,35 @@ navbar{
     font-family: Segoe UI, serif;
 }
 #feed{
-    width: 110px;!important;
+    width: 110px;
 }
 #business{
-    width: 70px;!important;
+    width: 70px;
 }
 #shop{
-    width: 90px;!important;
+    width: 90px;
 }
 #help{
-    width: 10px;!important;
+    width: 10px;
 }
+@media screen and (max-width: 625px) {
+    .navbarContent {
+        font-size: 13px;
+    }
+    #feed{
+        width: 90px;!important;
+    }
+    #business{
+        width: 55px;!important;
+    }
+    #shop{
+        width: 65px;!important;
+    }
+    #help{
+        width: 5px;!important;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -48,36 +72,6 @@ body {
     min-height: inherit;
     margin: 0;
     padding: 0;
-}
-.heart {
-    left: 55%;
-    background-color: #545454;
-    display: inline-block;
-    height: 23px;
-    margin: 20px 10px;
-    position: relative;
-    transform: rotate(-45deg);
-    width: 23px;
-
-}
-.heart:before,
-.heart:after {
-    content: "";
-    background-color: #545454;
-    border-radius: 50%;
-    height: 23px;
-    position: absolute;
-    width: 23px;
-}
-
-.heart:before {
-    top: -15px;
-    left: 0;
-}
-
-.heart:after {
-    left: 15px;
-    top: 0;
 }
 
 
@@ -135,10 +129,17 @@ body {
     border-color: #135987;
     color: #135987;
 }
-
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+   max-width: 1400px;
+}
 .item {
+    max-width: 300px;
     border-radius: 10px;
-    background: #e4703a;
+    border: 2px double #d1d1d1;
+    background:#FFF5F7;
     padding: 15px;
     margin: 5px;
     text-align: center;
@@ -155,12 +156,14 @@ p {
     .flexbox {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
-        max-height: 800px;
+        flex-direction: row;
+        max-height: 1200px;
     }
     .item {
+        flex-flow: column;
         width: 28%;
     }
+
 }
 
 .search {
@@ -195,5 +198,9 @@ p {
     cursor: pointer;
     font-size: 20px;
 }
-
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
 /*Resize the wrap to see the search bar change!*/

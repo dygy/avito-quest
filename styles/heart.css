@@ -1,0 +1,57 @@
+.heart {
+    z-index: 3;
+    left: 55%;
+    background-color: #545454;
+    display: inline-block;
+    height: 23px;
+    margin: -75px 10px;
+    position: fixed;
+    transform: rotate(-45deg);
+    width: 23px;
+
+}
+.heart:before,
+.heart:after {
+    content: "";
+    background-color: #545454;
+    border-radius: 50%;
+    height: 23px;
+    position: absolute;
+    width: 23px;
+}
+
+.heart:before {
+    top: -15px;
+    left: 0;
+}
+
+.heart:after {
+    left: 15px;
+    top: 0;
+}
+.fa-heart-o:hover {
+    background-color: #e20004;
+    border-color: #e22f95;
+    color: #fff;
+}
+.fa-heart-o:active{
+    background: #ff00e4;
+    border-color: #ff1600;
+    color: #fff;
+}
+.fa-heart-o{
+    color: dimgray;
+}
+.upOnPhoto {
+    position: relative;
+    bottom: 130px;
+    left: -130px;
+    z-index: 4;!important;
+
+}
+@media screen and (max-width : 1038px ) and (min-width: 600px )  {
+    .upOnPhoto {
+        left: -10px;
+        bottom: 150px;
+    }
+}
