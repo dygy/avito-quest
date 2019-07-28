@@ -91,6 +91,23 @@ navbar{
         width: 0;!important;
     }
 }
+@media (max-width: 300px) {
+    .navbarContent {
+        font-size: 8px;
+    }
+    #feed{
+        width: 50px;!important;
+    }
+    #business{
+        width: 27px;!important;
+    }
+    #shop{
+        width: 40px;!important;
+    }
+    #help{
+        width: 0;!important;
+    }
+}
 * {
     box-sizing: border-box;
 }

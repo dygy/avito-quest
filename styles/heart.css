@@ -55,3 +55,42 @@
         bottom: 150px;
     }
 }
+@media (max-width: 299px) {
+    .upOnPhoto{
+        left: 0;
+        bottom: 150px;
+    }
+}
+@media (max-width: 315px) {
+    .heart {
+        z-index: 3;
+        left: 55%;
+        background-color: #545454;
+        display: inline-block;
+        height: 15px;
+        margin: -75px 10px;
+        position: fixed;
+        transform: rotate(-45deg);
+        width: 15px;
+
+    }
+    .heart:before,
+    .heart:after {
+        content: "";
+        background-color: #545454;
+        border-radius: 50%;
+        height: 15px;
+        position: absolute;
+        width: 15px;
+    }
+
+    .heart:before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart:after {
+        left: 10px;
+        top: 0;
+    }
+}
