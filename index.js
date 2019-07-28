@@ -5,6 +5,7 @@ console.log(flexbox);
 const changeColor = (id, color) =>{
     document.getElementById(id).style.color = color
 };
+document.write(window.innerWidth+' '+window.outerWidth);
 const toDarkMode = () =>{
 
 };
@@ -35,7 +36,7 @@ let createPost = (name, city, price, photo, type)=> {
     posts.push(post);
     date = null;
 };
-for (let x=0 ;x<30;x++){
+for (let x=0 ;x<8;x++){
     createPost('Avtamabil','Moskva','700 000','./imgs/autonews2-tnnw.jpg','Auto')
 }
 
