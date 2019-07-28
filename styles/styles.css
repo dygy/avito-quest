@@ -42,7 +42,7 @@ navbar{
 }
 @media screen and (max-width: 625px) {
     .navbarContent {
-        font-size: 11px;
+        font-size: 12px;
     }
     #feed{
         width: 70px;!important;
@@ -57,7 +57,40 @@ navbar{
         width: 0;!important;
     }
 }
-
+@media screen and (max-width: 425px) {
+    .navbarContent {
+        font-size: 10px;
+    }
+    #feed{
+        width: 62px;!important;
+    }
+    #business{
+        width: 35px;!important;
+    }
+    #shop{
+        width: 60px;!important;
+    }
+    #help{
+        width: 0;!important;
+    }
+}
+@media screen and (max-width: 350px) {
+    .navbarContent {
+        font-size: 9px;
+    }
+    #feed{
+        width: 57px;!important;
+    }
+    #business{
+        width: 32px;!important;
+    }
+    #shop{
+        width: 45px;!important;
+    }
+    #help{
+        width: 0;!important;
+    }
+}
 * {
     box-sizing: border-box;
 }
