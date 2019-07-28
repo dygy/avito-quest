@@ -189,7 +189,6 @@ p {
 
 @media screen and (max-width: 599px) {
     .flexbox{
-        background-color: #545454;
         width: 100%;
     }
     .item{
