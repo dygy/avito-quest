@@ -10,61 +10,56 @@
     <link href="styles/heart.css" rel="stylesheet">
 </head>
 <body>
-<div id="header">
-    <navbar>
+    <div id="header">
+      <navbar>
         <div id="menu">
-            <h4 id='feed' class="navbarContent"
-            onmouseover="changeColor('feed','red')"
-            onmouseout="changeColor('feed','black')">
-            <a>Объявления </a></h4>
+            <a href="index.html">
+                    <h4 id='feed' class="navbarContent"
+                    onmouseover="changeColor('feed','red')"
+                    onmouseout="changeColor('feed','black')">
+                    Объявления</h4>
+            </a>
             <a>
-            <h4 class="navbarContent"
-            id='shop'
-            onmouseover='changeColor("shop","red")'
-            onmouseout= ' changeColor("shop","black")'>
-            Магазины   </h4>
-        </a>
-        <div> </div>
-        <a>
-        <h4     class="navbarContent"
-            id='business'
-            onmouseover="changeColor('business','red')"
-            onmouseout= "changeColor('business','black')">
-            Бизнес </h4>
-        </a>
-        <div> </div>
-        <a>
-        <h4  class="navbarContent"
-             id='help'
-             onmouseover="changeColor('help','red')"
-             onmouseout= "changeColor('help','black')">Помощь</h4>
-        </a>
-        <div> </div>
+                <h4 class="navbarContent"
+                    id='shop'
+                    onmouseover='changeColor("shop","red")'
+                    onmouseout= ' changeColor("shop","black")'>
+                    Магазины
+                </h4>
+            </a>
+            <a>
+                <h4 class="navbarContent"
+                        id='business'
+                        onmouseover="changeColor('business','red')"
+                        onmouseout= "changeColor('business','black')">
+                    Бизнес
+                </h4>
+            </a>
+            <a>
+                <h4  class="navbarContent"
+                     id='help'
+                     onmouseover="changeColor('help','red')"
+                     onmouseout= "changeColor('help','black')">Помощь
+                </h4>
+            </a>
         </div>
         <div id="rightMenu">
             <button class="btn flat">
                 Вход
             </button>
         </div>
-
     </navbar>
 </div>
-<div class="heart" onclick="showFavor()"></div>
-<div class="wrap">
-    <div class="search">
-        <input type="text" class="searchTerm" placeholder="Например: ААААВТАМАБИЛЬ">
-        <button type="submit" class="searchButton">
-            <i class="fa fa-search"> </i>
-        </button>
-    </div>
-</div>
-
-<div class="flexbox">
-
-
-</div>
-
-<script src="index.js"></script>
-
-</body>
+        <div class="heart" onclick="showFavor()"></div>
+            <div class="wrap">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Например: ААААВТАМАБИЛЬ">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"> </i>
+                    </button>
+                </div>
+            </div>
+            <div class="flexbox"> </div>
+           <script src="index.js"></script>
+    </body>
 </html>

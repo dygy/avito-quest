@@ -115,7 +115,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
-   max-width: 1400px;
+    max-width: 1400px;
 }
 .item {
     max-width: 300px;
@@ -147,7 +147,20 @@ p {
     }
 
 }
+/*Resize the wrap to see the search bar change!*/
 
+@media screen and (max-width: 599px) {
+    .flexbox {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        left: 5rem;
+    }
+    .item {
+        flex-flow: column;
+        min-width: 99%;
+    }
+}
 .search {
     width: 40%;
     position: relative;
@@ -180,35 +193,20 @@ p {
     cursor: pointer;
     font-size: 20px;
 }
-.container {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-/*Resize the wrap to see the search bar change!*/
 
-@media screen and (max-width: 599px) {
-    .flexbox{
-        width: 100%;
-    }
-    .item{
-        margin: 0px;
-        padding: 0px;
-        left: 0px;%;!important;
-    }
-}
-@media screen and (max-width: 625px) {
+
+@media screen and (max-width: 626px) {
     .navbarContent {
-        font-size: 12px;
+        font-size: 0.8em;
     }
     #feed{
-        width: 90px;!important;
+        width: 6.5em;!important;
     }
     #business{
-        width: 59px;!important;
+        width: 4.7em;!important;
     }
     #shop{
-        width: 60px;!important;
+        width: 4.7em;!important;
     }
     #help{
         width: 0;!important;
@@ -216,51 +214,51 @@ p {
 }
 @media screen and (max-width: 465px) {
     .navbarContent {
-        font-size: 11px;
+        font-size: 0.6875em;
     }
     #feed{
-        width: 70px;!important;
+        width: 6.3em;!important;
     }
     #business{
-        width: 40px;!important;
+        width: 3.7em;!important;
     }
     #shop{
-        width: 60px;!important;
+        width: 5.2em;!important;
     }
     #help{
         width: 0;!important;
     }
 }
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 0px) {
     .navbarContent {
-        font-size: 9px;
+        font-size: 0.600em;
     }
     #feed{
-        width: 65px;!important;
+        width: 4em;!important;
     }
     #business{
-        width: 40px;!important;
+        width: 2.5em;!important;
     }
     #shop{
-        width: 52px;!important;
+        width: 3.25em;!important;
     }
     #help{
         width: 0;!important;
     }
 }
-@media (max-width: 353px) {
+@media (max-width: 410px) {
     .navbarContent {
-        font-size: 9px;
+        font-size: 0.56em;
         font-weight: 900;
     }
     #feed{
-        width: 63px;!important;
+        width: 7.5em;!important;
     }
     #business{
-        width: 40px;!important;
+        width: 4.3em;!important;
     }
     #shop{
-        width: 45px;!important;
+        width: 5.2em;!important;
     }
     #help{
         width: 0;!important;
@@ -268,16 +266,16 @@ p {
 }
 @media (max-width: 343px) {
     .navbarContent {
-        font-size: 8px;
+        font-size: 0.52em;
     }
     #feed{
-        width: 60px;!important;
+        width: 6.55em;!important;
     }
     #business{
-        width: 36px;!important;
+        width: 3.9em;!important;
     }
     #shop{
-        width: 40px;!important;
+        width: 5.5em;!important;
     }
     #help{
         width: 0;!important;
