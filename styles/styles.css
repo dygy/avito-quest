@@ -165,7 +165,7 @@ p {
 
 @media screen and (max-width: 626px) {
     .navbarContent {
-        font-size: 0.70em;
+        font-size: 0.75em;
     }
     #feed{
         width: 6.5em;!important;
@@ -182,7 +182,7 @@ p {
 }
 @media screen and (max-width: 465px) {
     .navbarContent {
-        font-size: 0.6875em;
+        font-size: 0.6475em;
     }
     #feed{
         width: 6.3em;!important;
