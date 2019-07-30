@@ -6,12 +6,7 @@ if (myStorage.getItem('favorIndex')===undefined||myStorage.getItem('favorIndex')
 }else {
     favorIndex = myStorage.getItem('favorIndex')
 }
-if (myStorage.getItem('darkMode')==='false') {
-    toDark()
-}
-else {
-    toLight()
-}
+
 console.log(myStorage);
 const flexbox = document.getElementsByClassName('flexbox')[0];
 let clr;
@@ -70,7 +65,6 @@ const publishPost=(post)=>{
     const dateNode = document.createElement('date');
     dateNode.innerText = post.date;
 
-    // Create a text node
 
     node.appendChild(imgNode);
     node.appendChild(symbolNode);
@@ -86,7 +80,7 @@ const publishPost=(post)=>{
     textNode.appendChild(br);
     textNode.appendChild(dateNode);
 
-    flexbox.appendChild(node);     // Append <li> to <ul> with id="myList"
+    flexbox.appendChild(node);
 };
 let postNum =1;
 
@@ -101,8 +95,19 @@ const Post = class {
     id;
     isLiked
 };
-const posts = [];
 
+
+
+const posts = [];
+const priceOf=(price)=>{
+    price=price.split('');
+    for(let x=0;x<price.length;x++){
+        if (x%3===2){
+           price[x]+=' '
+        }
+    }
+    return price.toString().replace(/,/g,'')+' ₽'
+};
 let createPost = (name, city, price, photo, type, dates,id,isLiked)=> {
     const post = new Post();
     post.id=id;
@@ -133,7 +138,7 @@ let createNewPost = (name, city, price, photo, type, dates)=> {
     post.name = name;
     post.date = dates;
     post.city = city;
-    post.price = price;
+    post.price = priceOf(price);
     post.photo = photo;
     let date = new Date();
     if (post.date === '') {
@@ -161,5 +166,12 @@ let showFavor = () =>{
 };
 
 for (let x=0 ;x<8;x++){
-    createNewPost('Avtamabil','Moskva','700 000 ₽','./imgs/autonews2-tnnw.jpg','Auto','')
+    createNewPost('Avtamabil','Moskva','500000','./imgs/autonews2-tnnw.jpg','Auto','')
+}
+
+if (myStorage.getItem('darkMode')==='false') {
+    toDark()
+}
+else {
+    toLight()
 }

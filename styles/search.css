@@ -1,0 +1,111 @@
+.search {
+    left: 6px;
+    width: 99%;
+    position: relative;
+    display: flex;
+}
+
+#searchTerm {
+    width: 30%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+#searchType {
+    width: 20%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    border-bottom-left-radius: 1000px 1px  !important;
+    padding: 5px;
+    height: 36px;
+    outline: none;
+    color: #9DBFAF;
+
+}
+#searchMetro {
+    width: 100%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    border-bottom-left-radius: 1000px 1px  !important;
+    padding: 5px;
+    height: 36px;
+    outline: none;
+    color: #9DBFAF;
+
+}
+#searchCity {
+    width: 20%;
+    border: 3px solid #00B4CC;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    border-bottom-left-radius: 1000px 1px  !important;
+    padding: 5px;
+    height: 36px;
+    outline: none;
+    color: #9DBFAF;
+
+}
+#searchCity:focus{
+    color: #00B4CC;
+}
+#searchMetro2{
+    z-index: 2;
+    color: #00B4CC;
+}
+#searchMetro:focus{
+    color: #00B4CC;
+}
+
+#searchTerm:focus{
+    color: #00B4CC;
+}
+#searchType:focus{
+    color: #00B4CC;
+}
+a{
+    color: black;
+}
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #00B4CC;
+    background: #00B4CC;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.suggestions {
+    z-index: 3;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0rem;
+    border-radius: 0.125rem;
+    box-shadow: 0 2px 4px hsla(220, 10%, 40%, 0.4), 0 6px 20px hsla(220, 10%, 40%, 0.3);
+    background-color: #fff;
+}
+
+.suggestions > li {
+
+    padding: 0.5rem;
+    transition: 0.1s background-color ease-out;
+}
+.suggestions > li.current {
+    background-color: hsl(220, 20%, 94%);
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+.autocomplete {
+    position: relative;
+}

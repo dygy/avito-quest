@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="imgs/favicon.ico">
     <link href="styles/styles.css" rel="stylesheet">
     <link href="styles/heart.css" rel="stylesheet">
+    <link href="styles/search.css" rel="stylesheet">
 </head>
 <body>
     <div id="header">
@@ -53,14 +54,42 @@
         <div class="heart" onclick="showFavor()"></div>
             <div class="wrap">
                 <div class="search">
-                    <input type="text" class="searchTerm" placeholder="Например: ААААВТАМАБИЛЬ">
-                    <button type="submit" class="searchButton">
+                    <input type="text" id="searchTerm" placeholder="Например: ААААВТАМАБИЛЬ">
+                    <select name="select" id="searchType"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="value1">Недвижимость</option>
+                        <option value="value2" >Движимость</option>
+                        <option value="value3">Анальные шарики</option>
+                    </select>
+                    <select name="select" id="searchCity" onchange="changeMetros()"> <!--Supplement an id here instead of using 'name'-->
+                        <option value="Mozgow">Мазгва</option>
+                        <option value="Peeter" >Пытер</option>
+                        <option value="FAQU">Чота</option>
+                    </select>
+                    <div id="autocomplete"
+                            class="autocomplete"
+                            role="combobox"
+                            aria-autocomplete="list"
+                            aria-controls="suggestions"
+                            aria-expanded="false" >
+                        <input id="searchMetro"
+                                class="searchInput"
+                                autocomplete="off"
+                                placeholder="Метро"
+                        />
+                        <ul role="listbox"
+                            id="suggestions"
+                            class="suggestions"
+                            hidden >
+                        </ul>
+                    </div>
+                        <button type="submit" class="searchButton">
                         <i class="fa fa-search"> </i>
                     </button>
                 </div>
             </div>
             <div class="flexbox"> </div>
-    <script src="darkMode.js"></script>
-    <script src="index.js"></script>
+    <script src="js/darkMode.js"></script>
+    <script src="js/metro.js"></script>
+    <script src="js/index.js"></script>
     </body>
 </html>

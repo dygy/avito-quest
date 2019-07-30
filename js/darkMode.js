@@ -1,3 +1,9 @@
+Array.prototype.insert = function(index) {
+    this.splice.apply(this, [index, 0].concat(
+        Array.prototype.slice.call(arguments, 1)));
+    return this;
+};
+
 const elem = (id)=>{
     return document.getElementById(id)
 };
@@ -22,7 +28,12 @@ function toDark() {
     elem('shop').style.color='#d6dbe9';
     elem('business').style.color='#d6dbe9';
     elem('help').style.color='#d6dbe9';
-    document.body.style.color='#d6dbe9'
+    elem('searchTerm').style.backgroundColor='#5b5c63';
+    elem('searchType').style.backgroundColor='#5b5c63';
+    elem('searchMetro').style.backgroundColor='#5b5c63';
+    elem('suggestions').style.backgroundColor='#5b5c63';
+    elem('searchCity').style.backgroundColor='#5b5c63';
+    document.body.style.color='#d6dbe9';
     for(let i = 0; i < elems('item').length; i++) {
         elems('item')[i].style.backgroundColor = '#6E6E6E';
     }
@@ -35,6 +46,11 @@ function toLight() {
     elem('business').style.color='#000000';
     elem('help').style.color=    '#000000';
     document.body.style.color=       '#000000';
+    elem('searchTerm').style.backgroundColor='#FBFDFF';
+    elem('searchMetro').style.backgroundColor='#FBFDFF';
+    elem('searchType').style.backgroundColor='#FBFDFF';
+    elem('suggestions').style.backgroundColor='#FBFDFF';
+    elem('searchCity').style.backgroundColor='#FBFDFF';
     for(let i = 0; i < elems('item').length; i++) {
         elems('item')[i].style.backgroundColor = '#FFF5F7';
     }
