@@ -94,3 +94,8 @@
         top: 0;
     }
 }
+.liked{
+    background: #bb001b;!important;
+    border-color: #ff1600;!important;
+    color: #fff;!important;
+}
