@@ -165,16 +165,16 @@ p {
 
 @media screen and (max-width: 626px) {
     .navbarContent {
-        font-size: 0.75em;
+        font-size: 0.70em;
     }
     #feed{
-        width: 6.5em;!important;
+        width: 6.7em;!important;
     }
     #business{
-        width: 4.7em;!important;
+        width: 5em;!important;
     }
     #shop{
-        width: 4.7em;!important;
+        width: 5em;!important;
     }
     #help{
         width: 0;!important;
@@ -182,16 +182,16 @@ p {
 }
 @media screen and (max-width: 465px) {
     .navbarContent {
-        font-size: 0.6475em;
+        font-size: 0.6875em;
     }
     #feed{
-        width: 6.7em;!important;
+        width: 6.3em;!important;
     }
     #business{
         width: 3.7em;!important;
     }
     #shop{
-        width: 5.4em;!important;
+        width: 5.2em;!important;
     }
     #help{
         width: 0;!important;
