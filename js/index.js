@@ -31,7 +31,7 @@ const addToFavor=(param)=>{
         setTimeout(()=>{param.path[0].className= 'liked '+param.path[0].className},500)
     }
     else {
-        console.log(param.path[0].className)
+        console.log(param.path[0].className);
         post.isLiked=false;
         myStorage.removeItem('favor'+post.isLiked);
         param.path[0].className=param.path[0].className.replace(/liked/,'')
@@ -79,8 +79,8 @@ const publishPost=(post)=>{
     br = document.createElement("br");
     textNode.appendChild(br);
     textNode.appendChild(dateNode);
-
     flexbox.appendChild(node);
+    checkTheme()
 };
 let postNum =1;
 
@@ -141,7 +141,7 @@ let createNewPost = (name, city, price, photo, type, dates)=> {
     post.price = priceOf(price);
     post.photo = photo;
     let date = new Date();
-    if (post.date === '') {
+    if (post.date === ''||post.date === undefined) {
         if (date.getMinutes().toString().length === 2) {
             post.date = 'Сегодня ' + date.getHours() + ' : ' + date.getMinutes();
         } else {
@@ -163,15 +163,19 @@ let showFavor = () =>{
         console.log(item);
         createPost(item.name,item.city,item.price,item.photo,item.type,item.date,item.id,item.isLiked)
     }
-};
 
+};
+/*
 for (let x=0 ;x<8;x++){
     createNewPost('Avtamabil','Moskva','500000','./imgs/autonews2-tnnw.jpg','Auto','')
 }
-
-if (myStorage.getItem('darkMode')==='false') {
-    toDark()
+*/
+function checkTheme() {
+    if (myStorage.getItem('darkMode')==='false') {
+        toLight()
+    }
+    else {
+        toDark()
+    }
 }
-else {
-    toLight()
-}
+checkTheme();

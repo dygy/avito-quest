@@ -14,11 +14,11 @@ const elems = (className)=>{
 function toDarkMode  () {
     if (myStorage.getItem('darkMode')==='true') {
         myStorage.setItem('darkMode', false);
-        toDark()
+        toLight()
     }
     else {
         myStorage.setItem('darkMode', true);
-        toLight()
+        toDark()
     }
 
 }
