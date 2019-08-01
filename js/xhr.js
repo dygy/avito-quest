@@ -1,17 +1,4 @@
-/*
-function ajaxing() {
-    $.ajax({
-        url: "https://avito.dump.academy/products/",
-        success: function (data) {
-            for (let x=0;x<10 ;x++) {
-                console.log(data);
-                toPost(data.data[x])
-            }
-        }
-    });
-}
-ajaxing();
-*/
+let postNumb=0;
 function toPost(data) {
     console.log(data);
     if (data.price !== undefined) {
@@ -25,12 +12,16 @@ function fetching() {
             return response.json()
         })
         .then(function (defs) {
-            for (let x=0;x<10 ;x++) {
+            let x=postNumb;
+            for (x;x<postNumb+10&&postNumb<defs.data.length  ;x++) {
                 const post = defs.data[x];
                 toPost(post)
             }
+            postNumb=x
         })
-        .catch(alert);
+        .catch(
+        // Отправить на сервер для метрики
+        );
 }
 
 
