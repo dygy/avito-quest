@@ -100,13 +100,14 @@ const Post = class {
 
 const posts = [];
 const priceOf=(price)=>{
+    price=price.toString().reverse;
     price=price.split('');
     for(let x=0;x<price.length;x++){
         if (x%3===2){
            price[x]+=' '
         }
     }
-    return price.toString().replace(/,/g,'')+' ₽'
+    return price.toString().replace(/,/g,'').reverse+' ₽'
 };
 let createPost = (name, city, price, photo, type, dates,id,isLiked)=> {
     const post = new Post();

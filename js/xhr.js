@@ -1,6 +1,6 @@
 function ajaxing() {
     $.ajax({
-        url: "http://avito.dump.academy/products/",
+        url: "https://avito.dump.academy/products/",
         success: function (data) {
             for (let x=0;x<10 ;x++) {
                 console.log(data);
