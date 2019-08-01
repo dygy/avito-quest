@@ -1,3 +1,4 @@
+/*
 function ajaxing() {
     $.ajax({
         url: "https://avito.dump.academy/products/",
@@ -10,15 +11,16 @@ function ajaxing() {
     });
 }
 ajaxing();
+*/
 function toPost(data) {
     console.log(data);
     if (data.price !== undefined) {
         createNewPost(data.title, data.address, data.price.toString(), data.pictures[0], data.category, data.year)
     }
 }
-/*
+
 function fetching() {
-    fetch("http://avito.dump.academy/products/")
+    fetch("https://avito.dump.academy/products/")
         .then(response=>{
             return response.json()
         })
@@ -33,7 +35,7 @@ function fetching() {
 
 
 fetching();
-*/
+
 
 /*
     "links":
@@ -74,8 +76,8 @@ geocoder.geocode(
 */
 window.onscroll = function(ev) {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-        // you're at the bottom of the page
-        ajaxing()
+        //ajaxing()
+        fetching();
         console.log("Bottom of page");
     }
 };
