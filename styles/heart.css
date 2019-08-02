@@ -1,10 +1,10 @@
 .heart {
     z-index: 6;
     left: 55%;
+    top: 15px;
     background-color: #545454;
     display: inline-block;
     height: 23px;
-    margin: -75px 10px;
     position: fixed;
     transform: rotate(-45deg);
     width: 23px;
@@ -40,7 +40,8 @@
     color: #fff;
 }
 .fa-heart-o{
-    color: dimgray;
+    background-color: #d6dbe9;
+    color: #000000;
 }
 .upOnPhoto {
     position: relative;

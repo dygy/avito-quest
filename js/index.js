@@ -1,3 +1,4 @@
+let onFav = false;
 myStorage = localStorage;
 let favorIndex;
 if (myStorage.getItem('favorIndex')===undefined||myStorage.getItem('favorIndex')===null){
@@ -6,7 +7,6 @@ if (myStorage.getItem('favorIndex')===undefined||myStorage.getItem('favorIndex')
 }else {
     favorIndex = myStorage.getItem('favorIndex')
 }
-
 console.log(myStorage);
 const flexbox = document.getElementsByClassName('flexbox')[0];
 let clr;
@@ -17,25 +17,42 @@ const changeColor = (id, color) =>{
     document.getElementById(id).style.color = color
 };
 
-const addToFavor=(param)=>{
+function replaceStorage(isLiked) {
+    if (favorIndex>1){
+        let x;
+        myStorage.removeItem('favor'+isLiked);
+        for ( x=isLiked+1;x<favorIndex-1;x++){
+            myStorage.setItem('favor'+x-1,myStorage.getItem('favor'+x));
+            myStorage.removeItem('favor'+x)
+        }
 
-    const post = posts[param.path[0].className[param.path[0].className.length-1]];
-    console.log(param);
-    if (post.isLiked===false) {
-        post.isLiked= favorIndex;
-        myStorage.setItem('favor' + favorIndex, JSON.stringify(post));
-        // console.log(param.path[0].className[(param.path[0].className.length-1)]);
-        // console.log(myStorage.getItem('favor'+favorIndex));
+    }
+}
+
+//myStorage.clear();
+const addToFavor=(param)=>{
+    const post = param.path[0];
+    const obj = JSON.parse(post.data);
+    console.log(!/liked/g.test(post.className));
+    if (!/liked/g.test(post.className)) {
+        param.path[0].className= 'liked '+param.path[0].className;
+        obj.isLiked=favorIndex;
+        myStorage.setItem('favor' + favorIndex, JSON.stringify(obj));
         favorIndex++;
         myStorage.setItem('favorIndex', favorIndex);
-        setTimeout(()=>{param.path[0].className= 'liked '+param.path[0].className},500)
     }
     else {
-        console.log(param.path[0].className);
-        post.isLiked=false;
-        myStorage.removeItem('favor'+post.isLiked);
-        param.path[0].className=param.path[0].className.replace(/liked/,'')
+        console.log(obj.isLiked);
+        myStorage.removeItem('favor' + obj.isLiked);
 
+        favorIndex--;
+        replaceStorage(obj.isLiked);
+        param.path[0].className = param.path[0].className.replace(/liked/, '')
+        myStorage.setItem('favorIndex', favorIndex);
+        if (onFav) {
+            console.log(param.path);
+                param.path[1].parentNode.removeChild(param.path[1])
+        }
     }
 };
 const publishPost=(post)=>{
@@ -43,7 +60,7 @@ const publishPost=(post)=>{
     node.className = 'item ' + post.type;
     node.alt = '';
     const symbolNode = document.createElement('i');
-    if (post.isLiked) {
+    if (post.isLiked !== false) {
         symbolNode.className = 'fa fa-heart-o upOnPhoto liked index' + post.id;
     }
     else {
@@ -59,13 +76,12 @@ const publishPost=(post)=>{
     const priceNode = document.createElement('strong');
     priceNode.innerText = post.price;
     const nameNode = document.createElement('a');
-    nameNode.innerText = post.name;
+    nameNode.innerText = post.title;
     const cityNode = document.createElement('span');
     cityNode.innerText = post.city;
     const dateNode = document.createElement('date');
     dateNode.innerText = post.date;
-
-
+    symbolNode.data = JSON.stringify(post);
     node.appendChild(imgNode);
     node.appendChild(symbolNode);
     node.appendChild(textNode);
@@ -84,18 +100,7 @@ const publishPost=(post)=>{
 };
 let postNum =1;
 
-
-const Post = class {
-    name='';
-    date='';
-    price='';
-    photo='';
-    city='';
-    type='';
-    id;
-    isLiked
-};
-
+//myStorage.clear();
 
 
 const posts = [];
@@ -109,15 +114,15 @@ const priceOf=(price)=>{
     }
     return price.toString().replace(/,/g,'').reverse+' ₽'
 };
-let createPost = (name, city, price, photo, type, dates,id,isLiked)=> {
-    const post = new Post();
-    post.id=id;
+let createPost = (item)=> {
+    const post = item;
+    post.id=item.id;
     postNum++;
-    post.name = name;
-    post.date = dates;
-    post.city = city;
-    post.price = price;
-    post.photo = photo;
+    post.title = item.title;
+    post.date = item.date;
+    post.city = item.city;
+    post.price = item.price;
+    post.photo = item.photo;
     let date = new Date();
     if (post.date === '') {
         if (date.getMinutes().toString().length === 2) {
@@ -126,21 +131,20 @@ let createPost = (name, city, price, photo, type, dates,id,isLiked)=> {
             post.date = 'Сегодня ' + date.getHours() + ' :  0' + date.getMinutes();
         }
     }
-    post.isLiked=isLiked;
-    post.type=type;
+    post.isLiked=item.isLiked;
+    post.type=item.type;
     date = null;
     publishPost(post)
 };
-let createNewPost = (name, city, price, photo, type, dates)=> {
-    const post = new Post();
+let createNewPost = (item)=> {
+    const post = item;
     post.isLiked=false;
-    post.id=postNum;
+    post.id=posts.findIndex(x=>x.title===item.title&&x.price===item.price);
     postNum++;
-    post.name = name;
-    post.date = dates;
-    post.city = city;
-    post.price = priceOf(price);
-    post.photo = photo;
+    post.title = item.title;
+    post.city = 'Moscow';
+    post.price = priceOf(item.price.toString());
+    post.photo = item.pictures[0];
     let date = new Date();
     if (post.date === ''||post.date === undefined) {
         if (date.getMinutes().toString().length === 2) {
@@ -149,20 +153,21 @@ let createNewPost = (name, city, price, photo, type, dates)=> {
             post.date = 'Сегодня ' + date.getHours() + ' :  0' + date.getMinutes();
         }
     }
-    post.type=type;
-    posts.push(post);
+    post.type=item.category;
     date = null;
+    posts.splice(posts.findIndex(x=>x.id===post.id),1,post);
     publishPost(post)
 };
 let showFavor = () =>{
     let lngth= document.getElementsByClassName('item').length;
+    onFav = true;
     for (let y=0;y<lngth;y++){
         document.getElementsByClassName('item')[0].parentElement.removeChild(document.getElementsByClassName('item')[0])
     }
     for (let x=0;x<favorIndex;x++){
         const item =JSON.parse(myStorage.getItem('favor'+x));
         console.log(item);
-        createPost(item.name,item.city,item.price,item.photo,item.type,item.date,item.id,item.isLiked)
+        createPost(item)
     }
 
 };
@@ -172,7 +177,7 @@ for (let x=0 ;x<8;x++){
 }
 */
 function checkTheme() {
-    if (myStorage.getItem('darkMode')==='false') {
+    if (myStorage.getItem('darkMode')==='false'||myStorage.getItem('darkMode')===null) {
         toLight()
     }
     else {
@@ -180,3 +185,4 @@ function checkTheme() {
     }
 }
 checkTheme();
+

@@ -9,8 +9,10 @@
     <link href="styles/styles.css" rel="stylesheet">
     <link href="styles/heart.css" rel="stylesheet">
     <link href="styles/search.css" rel="stylesheet">
+    <link href="styles/dropdown.css" rel="stylesheet">
 </head>
 <body>
+
     <div id="header">
       <navbar id="navbar">
         <div id="menu">
@@ -45,22 +47,37 @@
             </a>
         </div>
         <div id="rightMenu">
-            <button class="btn flat" onclick="toDarkMode()">
+            <button class="btn flat" onclick="ChangeTheme()">
                 Вход
             </button>
         </div>
     </navbar>
 </div>
+    <div id="navtoggle">
+        <nav class="dropdown hiden">
+        <button class="nav-toggle"> <i class="fa fa-angle-right"></i></button>
+            <button class="flat toggleButton"> Вход</button>
+
+            <ul class="menu">
+                    <li><a>Объявления </a></li>
+                    <li><a >Магазин</a></li>
+                    <li><a >Бизнес</a></li>
+                    <li><a >Помощь</a></li>
+                    <li><a><button  onclick="ChangeTheme()">Темная тема</button></a></li>
+                </ul>
+        </nav>
+
+    </div>
         <div class="heart" onclick="showFavor()"></div>
             <div class="wrap">
                 <div class="search">
                     <input type="text" id="searchTerm" placeholder="Например: ААААВТАМАБИЛЬ">
-                    <select name="select" id="searchType"> <!--Supplement an id here instead of using 'name'-->
+                    <select name="select" id="searchType"> <!--Supplement an id here instead of using 'title'-->
                         <option value="value1">Недвижимость</option>
                         <option value="value2" >Движимость</option>
                         <option value="value3">Анальные шарики</option>
                     </select>
-                    <select name="select" id="searchCity" onchange="changeMetros()"> <!--Supplement an id here instead of using 'name'-->
+                    <select name="select" id="searchCity" onchange="changeMetros()"> <!--Supplement an id here instead of using 'title'-->
                         <option value="Mozgow">Мазгва</option>
                         <option value="Peeter" >Пытер</option>
                         <option value="FAQU">Чота</option>
@@ -92,5 +109,6 @@
     <script src="js/metro.js"></script>
     <script src="js/index.js"></script>
     <script src="js/xhr.js"></script>
+    <script src="js/dropdown.js"></script>
     </body>
 </html>

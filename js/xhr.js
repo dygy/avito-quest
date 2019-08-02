@@ -2,7 +2,7 @@ let postNumb=0;
 function toPost(data) {
     console.log(data);
     if (data.price !== undefined) {
-        createNewPost(data.title, data.address, data.price.toString(), data.pictures[0], data.category, data.year)
+        createNewPost(data)
     }
 }
 
@@ -12,18 +12,22 @@ function fetching() {
             return response.json()
         })
         .then(function (defs) {
-            let x=postNumb;
-            for (x;x<postNumb+10&&postNumb<defs.data.length  ;x++) {
-                const post = defs.data[x];
-                toPost(post)
+            for (let i=0;i<defs.data.length;i++) {
+                posts.push(defs.data[i])
             }
-            postNumb=x
+            uploadingNewPosts()
         })
         .catch(
         // Отправить на сервер для метрики
         );
 }
-
+function uploadingNewPosts() {
+    let x=postNumb;
+    for (x;x<postNumb+10&&postNumb<posts.length  ;x++) {
+        toPost(posts[x])
+    }
+    postNumb=x
+}
 
 fetching();
 
@@ -53,7 +57,7 @@ geocoder.geocode(
                 country=value[count-1];
                 state=value[count-2];
                 city=value[count-3];
-                alert("city name is: " + city);
+                alert("city title is: " + city);
             }
             else  {
                 alert("address not found");
@@ -66,9 +70,8 @@ geocoder.geocode(
 );
 */
 window.onscroll = function(ev) {
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-        //ajaxing()
-        fetching();
-        console.log("Bottom of page");
+    if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight)&&!onFav) {
+        uploadingNewPosts()
+
     }
 };

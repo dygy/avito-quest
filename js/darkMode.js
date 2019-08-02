@@ -18,7 +18,7 @@ const elem = (id)=>{
 const elems = (className)=>{
     return document.getElementsByClassName(className)
 };
-function toDarkMode  () {
+function ChangeTheme() {
     if (myStorage.getItem('darkMode')==='true') {
         myStorage.setItem('darkMode', false);
         toLight()
@@ -32,6 +32,7 @@ function toDarkMode  () {
 function toDark() {
     document.body.style.backgroundColor ='#323232';
     elem('navbar').style.backgroundColor='#412a3a';
+    elem('navbar').style.borderColor='#d6dbe9';
     elem('feed').style.color='#d6dbe9';
     elem('shop').style.color='#d6dbe9';
     elem('business').style.color='#d6dbe9';
@@ -49,6 +50,7 @@ function toDark() {
 function toLight() {
     document.body.style.backgroundColor ='#FBFDFF';
     elem('navbar').style.backgroundColor='#FAF5FF';
+    elem('navbar').style.borderColor='#000000';
     elem('feed').style.color=    '#000000';
     elem('shop').style.color=    '#000000';
     elem('business').style.color='#000000';
