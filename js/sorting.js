@@ -1,11 +1,11 @@
 function searchBiggestPrice() {
     posts.sort(compareByPrice);
-   // console.log(posts)
+    console.log(posts)
 }
 
 function searchBiggestRating() {
     posts.sort(compareByRating);
-    console.log(posts)
+//    console.log(posts)
 
 }
 
@@ -24,6 +24,7 @@ function newSort() {
     }
     else {
         clearFeed();
+        shuffle(posts);
         postNumb=0;
         uploadingNewPosts(true)
     }
@@ -73,4 +74,22 @@ function compareByPrice(a, b) {
         }
 
     return comparison;
+}
+function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }

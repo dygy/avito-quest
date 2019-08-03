@@ -148,7 +148,7 @@ let createNewPost = (item)=> {
     postNum++;
     post.title = item.title;
     post.city = 'Moscow';
-    post.price = priceOf(item.price.toString());
+    post.price = item.price;
     post.photo = item.pictures[0];
     let date = new Date();
     if (post.date === ''||post.date === undefined) {
@@ -173,9 +173,7 @@ let showFavor = () =>{
     }
 
 };
-function showFeed() {
 
-}
 function clearFeed() {
     let lngth= document.getElementsByClassName('item').length;
 

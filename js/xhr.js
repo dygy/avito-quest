@@ -30,13 +30,13 @@ function fetching() {
 }
 function uploadingNewPosts(exist) {
     let x=postNumb;
-    for (x;x<postNumb+10&&postNumb<posts.length  ;x++) {
+    for (x; x<postNumb+10 && x<posts.length  ;x++) {
         toPost(posts[x],exist)
     }
     postNumb=x
 }
 fetching();
-searchForSellers()
+searchForSellers();
 async function searchForSellers(){
     const authors = [];
     for (let x = 0;x<18;x++) {
@@ -55,6 +55,7 @@ async function searchForSellers(){
     authors.push(author)
     }
     for (let x = 0;x<posts.length;x++) {
+        normalizePrices(x);
         for (let y = 0;y<authors.length ;y++){
             console.log(authors[y]);
             if (posts[x].relationships.seller === authors[y].id){
@@ -64,6 +65,9 @@ async function searchForSellers(){
         }
     }
     uploadingNewPosts()
+}
+function normalizePrices(x){
+    posts[x].price = priceOf(posts[x].price)
 }
 /*
     "links":
