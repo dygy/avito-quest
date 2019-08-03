@@ -16,7 +16,7 @@
     <div id="header">
       <navbar id="navbar">
         <div id="menu">
-            <a onclick="{clearFeed();fetching()}"> <h4 id='feed' class="navbarContent"
+            <a onclick="{clearFeed();postNumb=0;uploadingNewPosts()}"> <h4 id='feed' class="navbarContent"
                     onmouseover="changeColor('feed','red')"
                     onmouseout="changeColor('feed',clr)">
                     Объявления</h4></a>
@@ -53,7 +53,7 @@
             <button class="flat toggleButton"> Вход</button>
 
             <ul class="menu">
-                    <li><a>Объявления </a></li>
+                    <li><a onclick="{clearFeed();postNumb=0;uploadingNewPosts()}">Объявления </a></li>
                     <li><a >Магазин</a></li>
                     <li><a >Бизнес</a></li>
                     <li><a >Помощь</a></li>
