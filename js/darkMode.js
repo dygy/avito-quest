@@ -32,7 +32,10 @@ function ChangeTheme() {
 function toDark() {
     document.body.style.backgroundColor ='#323232';
     elem('navbar').style.backgroundColor='#412a3a';
+    elem('dropdown').style.backgroundColor='#ffd495';
+    elem('nav-toggle').style.backgroundColor='#ffd495';
     elem('navbar').style.borderColor='#d6dbe9';
+    elem('dropdown').style.borderColor='#d6dbe9';
     elem('feed').style.color='#d6dbe9';
     elem('shop').style.color='#d6dbe9';
     elem('business').style.color='#d6dbe9';
@@ -46,11 +49,16 @@ function toDark() {
     for(let i = 0; i < elems('item').length; i++) {
         elems('item')[i].style.backgroundColor = '#6E6E6E';
     }
+    elem('Theme').innerText = 'Night';
+    elem('ThemeMenu').innerText = 'Night'
 }
 function toLight() {
     document.body.style.backgroundColor ='#FBFDFF';
     elem('navbar').style.backgroundColor='#FAF5FF';
+    elem('dropdown').style.backgroundColor='#FAF5FF';
+    elem('nav-toggle').style.backgroundColor='#FAF5FF';
     elem('navbar').style.borderColor='#000000';
+    elem('dropdown').style.borderColor='#000000';
     elem('feed').style.color=    '#000000';
     elem('shop').style.color=    '#000000';
     elem('business').style.color='#000000';
@@ -64,4 +72,7 @@ function toLight() {
     for(let i = 0; i < elems('item').length; i++) {
         elems('item')[i].style.backgroundColor = '#FFF5F7';
     }
+    elem('Theme').innerText = 'Day';
+    elem('ThemeMenu').innerText = 'Day'
+
 }

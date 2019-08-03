@@ -1,6 +1,6 @@
 let postNumb=0;
 function toPost(data) {
-    console.log(data);
+//    console.log(data);
     if (data.price !== undefined) {
         createNewPost(data)
     }

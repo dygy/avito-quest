@@ -42,7 +42,7 @@ const addToFavor=(param)=>{
         myStorage.setItem('favorIndex', favorIndex);
     }
     else {
-        console.log(obj.isLiked);
+    //    console.log(obj.isLiked);
         myStorage.removeItem('favor' + obj.isLiked);
 
         favorIndex--;
@@ -50,7 +50,7 @@ const addToFavor=(param)=>{
         param.path[0].className = param.path[0].className.replace(/liked/, '')
         myStorage.setItem('favorIndex', favorIndex);
         if (onFav) {
-            console.log(param.path);
+     //       console.log(param.path);
                 param.path[1].parentNode.removeChild(param.path[1])
         }
     }
@@ -159,18 +159,25 @@ let createNewPost = (item)=> {
     publishPost(post)
 };
 let showFavor = () =>{
-    let lngth= document.getElementsByClassName('item').length;
     onFav = true;
-    for (let y=0;y<lngth;y++){
-        document.getElementsByClassName('item')[0].parentElement.removeChild(document.getElementsByClassName('item')[0])
-    }
+    clearFeed();
     for (let x=0;x<favorIndex;x++){
         const item =JSON.parse(myStorage.getItem('favor'+x));
-        console.log(item);
+      //  console.log(item);
         createPost(item)
     }
 
 };
+function showFeed() {
+
+}
+function clearFeed() {
+    let lngth= document.getElementsByClassName('item').length;
+
+    for (let y=0;y<lngth;y++){
+        document.getElementsByClassName('item')[0].parentElement.removeChild(document.getElementsByClassName('item')[0])
+    }
+}
 /*
 for (let x=0 ;x<8;x++){
     createNewPost('Avtamabil','Moskva','500000','./imgs/autonews2-tnnw.jpg','Auto','')

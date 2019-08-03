@@ -10,13 +10,14 @@
     <link href="styles/heart.css" rel="stylesheet">
     <link href="styles/search.css" rel="stylesheet">
     <link href="styles/dropdown.css" rel="stylesheet">
+    <link href="styles/switch.css" rel="stylesheet">
 </head>
 <body>
 
     <div id="header">
       <navbar id="navbar">
         <div id="menu">
-            <a href="index.html">
+            <a onclick="{clearFeed();fetching()}">
                     <h4 id='feed' class="navbarContent"
                     onmouseover="changeColor('feed','red')"
                     onmouseout="changeColor('feed',clr)">
@@ -45,6 +46,11 @@
                      onmouseout= "changeColor('help',clr)">Помощь
                 </h4>
             </a>
+            <div>
+             <div class="switch-wrap-menu"><span id="ThemeMenu">Day</span>
+                    <input onclick="ChangeTheme()" class="switch" id="check" type="checkbox"><label for="check">&nbsp;</label>
+             </div>
+            </div>
         </div>
         <div id="rightMenu">
             <button class="btn flat" onclick="ChangeTheme()">
@@ -54,8 +60,8 @@
     </navbar>
 </div>
     <div id="navtoggle">
-        <nav class="dropdown hiden">
-        <button class="nav-toggle"> <i class="fa fa-angle-right"></i></button>
+        <nav class="dropdown hiden" id="dropdown">
+        <button class="nav-toggle" id="nav-toggle"> <i class="fa fa-angle-right" id="icon"></i></button>
             <button class="flat toggleButton"> Вход</button>
 
             <ul class="menu">
@@ -63,7 +69,9 @@
                     <li><a >Магазин</a></li>
                     <li><a >Бизнес</a></li>
                     <li><a >Помощь</a></li>
-                    <li><a><button  onclick="ChangeTheme()">Темная тема</button></a></li>
+                <li><div class="switch-wrap"><span id="Theme">Day</span>
+                        <input onclick="ChangeTheme()" class="switch" id="check1" type="checkbox"><label for="check1">&nbsp;</label>
+                    </div></li>
                 </ul>
         </nav>
 
@@ -104,11 +112,30 @@
                     </button>
                 </div>
             </div>
+    <form class="form-vertical container" onchange="newSort()">
+        <div class="control-group">
+            <label class="control-label">Сортировать по:</label>
+            <label class="radio">
+                <input type="radio" name="r" value="date" checked>
+                <span>Дате</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="r" value="price">
+                <span>Цене</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="r" value="rating">
+                <span>Рейтингу </span>
+            </label>
+        </div>
+
+    </form>
             <div class="flexbox"> </div>
     <script src="js/darkMode.js"></script>
     <script src="js/metro.js"></script>
     <script src="js/index.js"></script>
     <script src="js/xhr.js"></script>
     <script src="js/dropdown.js"></script>
-    </body>
+    <script src="js/sorting.js"></script>
+</body>
 </html>

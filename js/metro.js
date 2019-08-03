@@ -1,5 +1,5 @@
 function changeMetros(){
-  console.log(elem('searchCity').value);
+ // console.log(elem('searchCity').value);
     const city = elem('searchCity').value;
     switch (city) {
         case 'Mozgow':
@@ -105,7 +105,7 @@ function highlightPrev() {
 
 // runs on every keypress within the autocomplete
 function handleKeyDown(event) {
-    console.log(METROS);
+ //   console.log(METROS);
     switch (event.key) {
         case "Escape":
             closeSuggestions();
