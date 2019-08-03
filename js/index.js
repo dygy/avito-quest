@@ -81,6 +81,8 @@ const publishPost=(post)=>{
     cityNode.innerText = post.city;
     const dateNode = document.createElement('date');
     dateNode.innerText = post.date;
+    const authorNode = document.createElement('date');
+    authorNode.innerText = post.author.name+' {'+post.rating+'}';
     symbolNode.data = JSON.stringify(post);
     node.appendChild(imgNode);
     node.appendChild(symbolNode);
@@ -95,8 +97,11 @@ const publishPost=(post)=>{
     br = document.createElement("br");
     textNode.appendChild(br);
     textNode.appendChild(dateNode);
+    br = document.createElement("br");
+    textNode.appendChild(br);
+    textNode.appendChild(authorNode);
     flexbox.appendChild(node);
-    checkTheme()
+    checkTheme();
 };
 let postNum =1;
 

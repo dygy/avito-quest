@@ -1,9 +1,14 @@
 let postNumb=0;
-function toPost(data) {
+function toPost(data, exist) {
 //    console.log(data);
-    if (data.price !== undefined) {
+//НЕ ЗАБЫТЬ ОБРАБОТАТЬ ОСТАЛЬНЫЕ ОБЪЯВЛЕНИЯ
+    if ((data.price !== undefined &&!exist)||data.date === undefined) {
         createNewPost(data)
     }
+    else if (data.price!== undefined && exist){
+        createPost(data)
+    }
+
 }
 
 function fetching() {
@@ -13,25 +18,53 @@ function fetching() {
         })
         .then(function (defs) {
             for (let i=0;i<defs.data.length;i++) {
-                posts.push(defs.data[i])
+                if (defs.data[i].price!==undefined) {
+                    posts.push(defs.data[i])
+                }
             }
-            uploadingNewPosts()
+
         })
         .catch(
         // Отправить на сервер для метрики
         );
 }
-function uploadingNewPosts() {
+function uploadingNewPosts(exist) {
     let x=postNumb;
     for (x;x<postNumb+10&&postNumb<posts.length  ;x++) {
-        toPost(posts[x])
+        toPost(posts[x],exist)
     }
     postNumb=x
 }
-
 fetching();
-
-
+searchForSellers()
+async function searchForSellers(){
+    const authors = [];
+    for (let x = 0;x<18;x++) {
+    const author  =  await fetch("http://avito.dump.academy/sellers/" +x)
+            .then(response => {
+                return response.json()
+            })
+            .then( function (defs) {
+                return defs.data;
+            })
+            .catch(function (error) {
+                    return error
+                // Отправить на сервер для метрики
+                }
+            );
+    authors.push(author)
+    }
+    for (let x = 0;x<posts.length;x++) {
+        for (let y = 0;y<authors.length ;y++){
+            console.log(authors[y]);
+            if (posts[x].relationships.seller === authors[y].id){
+                posts[x].author = authors[y];
+                posts[x].rating= authors[y].rating
+            }
+        }
+    }
+    uploadingNewPosts()
+}
 /*
     "links":
         {
