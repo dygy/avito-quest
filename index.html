@@ -6,17 +6,18 @@
     <meta charset="UTF-8">
     <title>Авито</title>
     <link rel="shortcut icon" href="imgs/favicon.ico">
-    <link href="styles/styles.css" rel="stylesheet">
     <link href="styles/heart.css" rel="stylesheet">
     <link href="styles/search.css" rel="stylesheet">
     <link href="styles/dropdown.css" rel="stylesheet">
     <link href="styles/switch.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="header">
       <navbar id="navbar">
         <div id="menu">
-            <a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,postsNow)}"> <h4 id='feed' class="navbarContent">
+            <a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,posts)}"> <h4 id='feed' class="navbarContent">
                     Объявления</h4></a>
             <a><h4 class="navbarContent"
                     id='shop'>
@@ -34,7 +35,7 @@
              </div>
            </div>
         <div id="rightMenu">
-            <button class="btn flat" onclick="ChangeTheme()">
+            <button class="btn flat" >
                 Вход
             </button>
         </div>
@@ -46,7 +47,7 @@
             <button class="flat toggleButton"> Вход</button>
 
             <ul class="menu">
-                    <li><a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,postsNow)}">Объявления </a></li>
+                    <li><a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,posts)}">Объявления </a></li>
                     <li><a >Магазин</a></li>
                     <li><a >Бизнес</a></li>
                     <li><a >Помощь</a></li>
@@ -66,7 +67,8 @@
                         <option value="value2" >Движимость</option>
                         <option value="value3">Анальные шарики</option>
                     </select>
-                    <select name="select" id="searchCity" onchange="changeMetros()"> <!--Supplement an id here instead of using 'title'-->
+                    <select name="select" id="searchCity" onchange="{changeMetros();showCity()}"> <!--Supplement an id here instead of using 'title'-->
+                        <option value="Any">_</option>
                         <option value="Mozgow">Мазгва</option>
                         <option value="Peeter" >Пытер</option>
                         <option value="FAQU">Чота</option>

@@ -1,5 +1,8 @@
 let postsNow=[];
 let posts = [];
+let postNumb=0;
+
+
 Array.prototype.insert = function(index) {
     this.splice.apply(this, [index, 0].concat(
         Array.prototype.slice.call(arguments, 1)));
@@ -33,10 +36,10 @@ function ChangeTheme() {
 function toDark() {
     document.body.style.backgroundColor ='#323232';
     elem('navbar').style.backgroundColor='#412a3a';
-    elem('dropdown').style.backgroundColor='#ffd495';
-    elem('nav-toggle').style.backgroundColor='#ffd495';
+    elem('dropdown').style.backgroundColor='#d3af7b';
+    elem('navtoggle').style.backgroundColor='#d3af7b';
     elem('navbar').style.borderColor='#d6dbe9';
-    elem('dropdown').style.borderColor='#d6dbe9';
+    elem('navtoggle').style.borderColor='#ffffff';
     elem('feed').style.color='#d6dbe9';
     elem('shop').style.color='#d6dbe9';
     elem('business').style.color='#d6dbe9';
@@ -59,7 +62,7 @@ function toLight() {
     elem('dropdown').style.backgroundColor='#FAF5FF';
     elem('nav-toggle').style.backgroundColor='#FAF5FF';
     elem('navbar').style.borderColor='#000000';
-    elem('dropdown').style.borderColor='#000000';
+    elem('navtoggle').style.borderColor='#000000';
     elem('feed').style.color=    '#000000';
     elem('shop').style.color=    '#000000';
     elem('business').style.color='#000000';

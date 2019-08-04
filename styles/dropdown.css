@@ -59,12 +59,12 @@
     padding:.5em .5em;
     outline:none;
     margin-bottom:.2em;
-    color:turquoise;
+    color:turquoise;!important;
     text-decoration:none;
     transition: all 0.2s;
 }
 .menu span{
-    color:turquoise;
+    color:turquoise;!important;
     text-decoration: Highlight;
     transition: all 0.2s;
 }

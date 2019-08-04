@@ -32,8 +32,37 @@ function newSort() {
         uploadingNewPosts(true,postsNow)
     }
 }
+function showCity() {
+    const city =elem('searchCity').value;
+    postsNow=[];
+    clearFeed();
+    switch (city) {
+        case 'Mozgow':
+            sortByCity('Moscow');
+            break;
+        case 'Peeter':
+            sortByCity('Peter');
+            break;
+        case 'FAQU':
+            sortByCity('Chota');
+            break;
+        case 'Any':
+            postsNow=posts;
+            break
 
-
+    }
+    postNumb=0;
+    console.log(postsNow);
+    uploadingNewPosts(true, postsNow)
+}
+function sortByCity(city) {
+    for (let x=0;x<posts.length ;x++) {
+        console.log(posts[x].city)
+        if (posts[x].city===city){
+            postsNow.push(posts[x])
+        }
+    }
+}
 
 function checkRadios() {
     if ( elem('rating').checked){
@@ -51,7 +80,6 @@ function checkRadios() {
 }
 function compareByRating(a, b) {
 
-
     const genreA = a.rating;
     const genreB = b.rating;
 
@@ -62,7 +90,6 @@ function compareByRating(a, b) {
         return -1;
     }
     return comparison;
-
 }
 function compareByPrice(a, b) {
     const genreA = parseInt(a.price.substr(0,a.price.length-1).replace(/ /g,''));

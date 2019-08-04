@@ -49,6 +49,7 @@ const addToFavor=(param)=>{
     }
 };
 const publishPost=(post)=>{
+    post.id=posts.findIndex(x=>x.title===post.title&&x.price===post.price);
     const node = document.createElement("div");                 // Create a <li> node
     node.className = 'item ' + post.type;
     node.alt = '';
@@ -75,7 +76,9 @@ const publishPost=(post)=>{
     const dateNode = document.createElement('date');
     dateNode.innerText = post.date;
     const authorNode = document.createElement('date');
-    authorNode.innerText = post.author.name+' {'+post.rating+'}';
+
+    authorNode.innerHTML =`<a href="./`+post.author.id+`">`+ post.author.name+`</a> <span style="color: red;  -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: black; "> {`+post.rating+`} </span>`;
     symbolNode.data = JSON.stringify(post);
     node.appendChild(imgNode);
     node.appendChild(symbolNode);
@@ -96,10 +99,8 @@ const publishPost=(post)=>{
     flexbox.appendChild(node);
     checkTheme();
 };
-let postNum =1;
 
 //myStorage.clear();
-
 
 
 const priceOf=(price)=>{
@@ -112,59 +113,15 @@ const priceOf=(price)=>{
     }
     return price.toString().replace(/,/g,'').reverse+' ₽'
 };
-let createPost = (item)=> {
-    const post = item;
-    post.id=item.id;
-    postNum++;
-    post.title = item.title;
-    post.date = item.date;
-    post.city = item.city;
-    post.price = item.price;
-    post.photo = item.photo;
-    let date = new Date();
-    if (post.date === '') {
-        if (date.getMinutes().toString().length === 2) {
-            post.date = 'Сегодня ' + date.getHours() + ' : ' + date.getMinutes();
-        } else {
-            post.date = 'Сегодня ' + date.getHours() + ' :  0' + date.getMinutes();
-        }
-    }
-    post.isLiked=item.isLiked;
-    post.type=item.type;
-    date = null;
-    postsNow = posts;
-    publishPost(post)
-};
-let createNewPost = (item)=> {
-    const post = item;
-    post.isLiked=false;
-    post.id=posts.findIndex(x=>x.title===item.title&&x.price===item.price);
-    postNum++;
-    post.title = item.title;
-    post.city = 'Moscow';
-    post.price = item.price;
-    post.photo = item.pictures[0];
-    let date = new Date();
-    if (post.date === ''||post.date === undefined) {
-        if (date.getMinutes().toString().length === 2) {
-            post.date = 'Сегодня ' + date.getHours() + ' : ' + date.getMinutes();
-        } else {
-            post.date = 'Сегодня ' + date.getHours() + ' :  0' + date.getMinutes();
-        }
-    }
-    post.type=item.category;
-    date = null;
-    postsNow = posts;
-    posts.splice(posts.findIndex(x=>x.id===post.id),1,post);
-    publishPost(post)
-};
+
+
 let showFavor = () =>{
     onFav = true;
     clearFeed();
     for (let x=0;x<favorIndex;x++){
         const item =JSON.parse(myStorage.getItem('favor'+x));
       //  console.log(item);
-        createPost(item)
+        publishPost(item)
     }
 
 };

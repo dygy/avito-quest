@@ -1,12 +1,9 @@
-let postNumb=0;
+
 function toPost(data, exist) {
 //    console.log(data);
 //НЕ ЗАБЫТЬ ОБРАБОТАТЬ ОСТАЛЬНЫЕ ОБЪЯВЛЕНИЯ
-    if ((data.price !== undefined &&!exist)||data.date === undefined) {
-        createNewPost(data)
-    }
-    else if (data.price!== undefined && exist){
-        createPost(data)
+    if (data.price!== undefined){
+        publishPost(data)
     }
 
 }
@@ -17,10 +14,35 @@ async function fetching() {
             return response.json()
         })
         .then(function (defs) {
-            console.log(defs.data);
+        //    console.log(defs.data);
             for (let i=0;i<defs.data.length;i++) {
                 if (defs.data[i].price!==undefined) {
+                    const post = defs.data[i];
+                    post.price =priceOf(post.price);
+                    post.isLiked=false;
+                    const random = Math.random()*3;
+                    if (random<=1){
+                        post.city = 'Moscow';
 
+                    }
+                    else if (random <= 2) {
+                        post.city = 'Peter';
+                    }
+                    else {
+                        post.city = 'Chota';
+                    }
+                    post.photo = post.pictures[0];
+                    let date = new Date();
+                    if (post.date === ''||post.date === undefined) {
+                        if (date.getMinutes().toString().length === 2) {
+                            post.date = 'Сегодня ' + date.getHours() + ' : ' + date.getMinutes();
+                        } else {
+                            post.date = 'Сегодня ' + date.getHours() + ' :  0' + date.getMinutes();
+                        }
+                    }
+                    post.type=post.category;
+                    date = null;
+                    postsNow = posts;
                     posts.push(defs.data[i])
                 }
             }
@@ -44,7 +66,7 @@ async function searchForSellers(){
                 return response.json()
             })
             .then( function (defs) {
-                console.log(defs.data);
+          //      console.log(defs.data);
                 return defs.data;
             })
             .catch(function (error) {
@@ -53,9 +75,7 @@ async function searchForSellers(){
                 }
             );
     for (let x = 0;x<posts.length;x++) {
-        normalizePrices(x);
         for (let y = 0;y<authors.length ;y++){
-            console.log(authors[y]);
             if (posts[x].relationships.seller === authors[y].id){
                 posts[x].author = authors[y];
                 posts[x].rating= authors[y].rating
@@ -64,9 +84,7 @@ async function searchForSellers(){
     }
     uploadingNewPosts(false,posts)
 }
-function normalizePrices(x){
-    posts[x].price = priceOf(posts[x].price)
-}
+
 /*
     "links":
         {

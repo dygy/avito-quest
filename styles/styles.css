@@ -1,3 +1,4 @@
+
 #header{
     position: relative;
     top: 0;
@@ -59,9 +60,7 @@ body {
     margin: 0;
     padding: 0;
 }
-a {
-    color: inherit!important;
-}
+
 
 .btn {
     float: right;
@@ -133,11 +132,6 @@ a {
     text-align: center;
 }
 img {
-    position: sticky;!important;
-    position: -webkit-sticky;!important; /* Safari */
-    top: 0;!important;
-    max-width: 100%;
-    max-height: 100%;
 }
 p {
     text-align: left;
@@ -152,11 +146,10 @@ p {
     }
     .item {
         flex-flow: column;
-        width: 28%;
+        width: 30%;
+        min-width: 230px;
     }
-    img{
 
-    }
 
 }
 /*Resize the wrap to see the search bar change!*/
@@ -167,26 +160,15 @@ p {
         flex-wrap: wrap;
         flex-direction: row;
         left: 5rem;
+        align-items: center;
     }
     .item {
         flex-flow: column;
-        min-width: 99%;
-        max-height: 99%;
+        max-width: 50%;
+        min-width: 230px;
     }
 }
 
-#feed:hover{
-    color: red;!important;
-}
-#business:hover{
-    color: red;
-}
-#shop:hover{
-    color: red;
-}
-#help:hover{
-    color: red;
-}
 h4:hover{
     border: 1px darkgray dashed;
     -webkit-border-radius: 1px 2px 3px 4px;
@@ -194,4 +176,7 @@ h4:hover{
     border-radius: 1px 2px 3px 4px;
     background-color: rgba(136, 107, 235, 0.5);
     color: red !important;
+}
+a {
+    color: inherit
 }
