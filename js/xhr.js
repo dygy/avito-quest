@@ -38,7 +38,7 @@ function uploadingNewPosts(exist) {
 fetching();
 searchForSellers();
 async function searchForSellers(){
-    const authors  =  await fetch("http://avito.dump.academy/sellers/")
+    const authors  =  await fetch("https://avito.dump.academy/sellers/")
             .then(response => {
                 return response.json()
             })
