@@ -38,13 +38,12 @@ function uploadingNewPosts(exist) {
 fetching();
 searchForSellers();
 async function searchForSellers(){
-    const authors = [];
-    for (let x = 0;x<18;x++) {
-    const author  =  await fetch("http://avito.dump.academy/sellers/" +x)
+    const authors  =  await fetch("http://avito.dump.academy/sellers/")
             .then(response => {
                 return response.json()
             })
             .then( function (defs) {
+                console.log(defs.data);
                 return defs.data;
             })
             .catch(function (error) {
@@ -52,8 +51,6 @@ async function searchForSellers(){
                 // Отправить на сервер для метрики
                 }
             );
-    authors.push(author)
-    }
     for (let x = 0;x<posts.length;x++) {
         normalizePrices(x);
         for (let y = 0;y<authors.length ;y++){
