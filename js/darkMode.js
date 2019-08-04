@@ -5,7 +5,6 @@ Array.prototype.insert = function(index) {
         Array.prototype.slice.call(arguments, 1)));
     return this;
 };
-
 Object.defineProperty(String.prototype, "reverse", {
     get: function() {
         let arr = this.split('');

@@ -67,7 +67,6 @@ function compareByRating(a, b) {
 function compareByPrice(a, b) {
     const genreA = parseInt(a.price.substr(0,a.price.length-1).replace(/ /g,''));
     const genreB = parseInt(b.price.substr(0,b.price.length-1).replace(/ /g,''));;
-    console.log(genreA +' >'+genreB+' '+(genreA >genreB))
     let comparison = 0;
 
         if (genreA > genreB) {

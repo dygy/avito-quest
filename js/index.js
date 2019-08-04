@@ -9,8 +9,6 @@ if (myStorage.getItem('favorIndex')===undefined||myStorage.getItem('favorIndex')
 }
 console.log(myStorage);
 const flexbox = document.getElementsByClassName('flexbox')[0];
-let clr;
-
 
 function replaceStorage(isLiked) {
     if (favorIndex>1){
@@ -64,7 +62,7 @@ const publishPost=(post)=>{
     symbolNode.onclick = addToFavor;
     const imgNode = document.createElement('img');
     imgNode.src = post.photo;
-    imgNode.style.width = '240px';
+    imgNode.style.width = '200px';
     imgNode.style.height = '150px';
     imgNode.style.zIndex = 0;
     const textNode = document.createElement('p');

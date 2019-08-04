@@ -43,26 +43,7 @@ navbar{
 #help{
     width: 70px;
 }
-#feed:hover{
-    color: red;!important;
-}
-#business:hover{
-    color: red;
-}
-#shop:hover{
-    color: red;
-}
-#help:hover{
-    color: red;
-}
-h4:hover{
-    border: 1px darkgray dashed;
-    -webkit-border-radius: 1px 2px 3px 4px;
-    -moz-border-radius: 1px 2px 3px 4px;
-    border-radius: 1px 2px 3px 4px;
-    background-color: rgba(136, 107, 235, 0.5);
-    color: red;
-}
+
 * {
     box-sizing: border-box;
 }
@@ -78,7 +59,9 @@ body {
     margin: 0;
     padding: 0;
 }
-
+a {
+    color: inherit!important;
+}
 
 .btn {
     float: right;
@@ -138,7 +121,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
-    max-width: 1400px;
+    max-width: 100%;
 }
 .item {
     max-width: 300px;
@@ -150,8 +133,11 @@ body {
     text-align: center;
 }
 img {
+    position: sticky;!important;
+    position: -webkit-sticky;!important; /* Safari */
+    top: 0;!important;
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
 }
 p {
     text-align: left;
@@ -168,6 +154,9 @@ p {
         flex-flow: column;
         width: 28%;
     }
+    img{
+
+    }
 
 }
 /*Resize the wrap to see the search bar change!*/
@@ -182,6 +171,27 @@ p {
     .item {
         flex-flow: column;
         min-width: 99%;
+        max-height: 99%;
     }
 }
 
+#feed:hover{
+    color: red;!important;
+}
+#business:hover{
+    color: red;
+}
+#shop:hover{
+    color: red;
+}
+#help:hover{
+    color: red;
+}
+h4:hover{
+    border: 1px darkgray dashed;
+    -webkit-border-radius: 1px 2px 3px 4px;
+    -moz-border-radius: 1px 2px 3px 4px;
+    border-radius: 1px 2px 3px 4px;
+    background-color: rgba(136, 107, 235, 0.5);
+    color: red !important;
+}
