@@ -71,6 +71,7 @@ const publishPost=(post)=>{
     priceNode.innerText = post.price;
     const nameNode = document.createElement('a');
     nameNode.innerText = post.title;
+    nameNode.href = './product/'+post.id;
     const cityNode = document.createElement('span');
     cityNode.innerText = post.city;
     const dateNode = document.createElement('date');
@@ -117,10 +118,12 @@ const priceOf=(price)=>{
 
 let showFavor = () =>{
     onFav = true;
+    favPosts=[];
     clearFeed();
     for (let x=0;x<favorIndex;x++){
         const item =JSON.parse(myStorage.getItem('favor'+x));
       //  console.log(item);
+        favPosts.push(item);
         publishPost(item)
     }
 

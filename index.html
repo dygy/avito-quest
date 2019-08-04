@@ -17,7 +17,7 @@
     <div id="header">
       <navbar id="navbar">
         <div id="menu">
-            <a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,posts)}"> <h4 id='feed' class="navbarContent">
+            <a onclick="{alreadyInProgress=false; onFav=false; clearFeed();postNumb=0;uploadingNewPosts(true,posts)}"> <h4 id='feed' class="navbarContent">
                     Объявления</h4></a>
             <a><h4 class="navbarContent"
                     id='shop'>
@@ -47,7 +47,8 @@
             <button class="flat toggleButton"> Вход</button>
 
             <ul class="menu">
-                    <li><a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,posts)}">Объявления </a></li>
+                    <li><a onclick="{onFav=false; postsNow=posts; clearFeed();postNumb=0;uploadingNewPosts(true,posts)}">
+                        Объявления </a></li>
                     <li><a >Магазин</a></li>
                     <li><a >Бизнес</a></li>
                     <li><a >Помощь</a></li>
@@ -62,16 +63,23 @@
             <div class="wrap">
                 <div class="search">
                     <input type="text" id="searchTerm" placeholder="Например: ААААВТАМАБИЛЬ">
-                    <select name="select" id="searchType"> <!--Supplement an id here instead of using 'title'-->
-                        <option value="value1">Недвижимость</option>
+                    <select name="select" id="searchType" onchange="
+                   // sortByType()
+                        ">
+                        <option disabled selected value> -- Выберите тип -- </option>
+                        <option value="immovable">Недвижимость</option>
                         <option value="value2" >Движимость</option>
+                        <option value="cameras">Фотоаппараты</option>
+                        <option value="laptops">Ноутбуки</option>
+                        <option value="auto">Автомобили</option>
                         <option value="value3">Анальные шарики</option>
                     </select>
-                    <select name="select" id="searchCity" onchange="{changeMetros();showCity()}"> <!--Supplement an id here instead of using 'title'-->
+                    <select name="select" id="searchCity" onchange="{changeMetros()//;showCity()
+                     }"> <!--Supplement an id here instead of using 'title'-->
                         <option value="Any">_</option>
-                        <option value="Mozgow">Мазгва</option>
-                        <option value="Peeter" >Пытер</option>
-                        <option value="FAQU">Чота</option>
+                        <option value="Moscow">Мазгва</option>
+                        <option value="Peter" >Пытер</option>
+                        <option value="Chota">Чота</option>
                     </select>
                     <div id="autocomplete"
                             class="autocomplete"
@@ -82,20 +90,21 @@
                         <input id="searchMetro"
                                 class="searchInput"
                                 autocomplete="off"
-                                placeholder="Метро"
-                        />
+                                placeholder="Метро" />
                         <ul role="listbox"
                             id="suggestions"
                             class="suggestions"
                             hidden >
                         </ul>
                     </div>
-                        <button type="submit" class="searchButton">
+                        <button type="submit" class="searchButton" id="searchButton" onclick="search()">
                         <i class="fa fa-search"> </i>
                     </button>
                 </div>
             </div>
-    <form class="form-vertical container" onchange="newSort()">
+    <form class="form-vertical container" onchange="
+  //  newSort()
+        ">
         <div class="control-group">
             <label class="control-label">Сортировать по:</label>
             <label class="radio">
@@ -104,15 +113,17 @@
             </label>
             <label class="radio">
                 <input type="radio" id="price" name="r" value="price">
-                <span>Цене</span>
+               <span>Цене</span>
             </label>
             <label class="radio">
                 <input id="rating" type="radio" name="r" value="rating">
                 <span>Рейтингу </span>
             </label>
         </div>
-
     </form>
+    <input type="number" id="fromPrice" min="0" max="99999999"  >
+    <span id="tire"> - </span>
+    <input type="number" id="toPrice" max="99999999" min="0">
             <div class="flexbox"> </div>
     <script src="js/darkMode.js"></script>
     <script src="js/metro.js"></script>

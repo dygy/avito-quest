@@ -178,5 +178,6 @@ h4:hover{
     color: red !important;
 }
 a {
+    color: #000; /* for browsers that don't support 'inherit' as a color value */
     color: inherit
 }

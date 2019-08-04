@@ -1,67 +1,81 @@
 function searchBiggestPrice() {
-    posts.sort(compareByPrice);
-    console.log(posts)
+    postsNow.sort(compareByPrice);
+    const fromPrice= parseInt(elem('fromPrice' ).value);
+    const toPrice=   parseInt(elem('toPrice' ).value);
+    console.log( fromPrice);
+    if (typeof fromPrice === "number" && typeof toPrice === "number" && !isNaN(toPrice)&&!isNaN(fromPrice)){
+        const newPosts=[];
+        for (let x=0;x<postsNow.length;x++) {
+            const price = parseInt(postsNow[x].price.substr(0,postsNow[x].price.length-1).replace(/ /g,''));
+            if (price >= fromPrice && price <= toPrice){
+                console.log(price+ ' '+fromPrice+' '+toPrice);
+                newPosts.push(postsNow[x])
+            }
+        }
+        postsNow=newPosts
+    }
 }
 
 function searchBiggestRating() {
-    posts.sort(compareByRating);
-//    console.log(posts)
-
+    postsNow.sort(compareByRating);
 }
 
 function newSort() {
-    if (checkRadios()===0){
-        clearFeed();
-        searchBiggestRating();
-        postNumb=0;
-        postsNow=posts;
-        uploadingNewPosts(true,postsNow)
-    }
-    else if (checkRadios() === 1){
-        clearFeed();
-        searchBiggestPrice();
-        postNumb=0;
-        postsNow=posts;
-        uploadingNewPosts(true,postsNow)
-    }
-    else {
-        clearFeed();
-        shuffle(posts);
-        postsNow=posts;
-        postNumb=0;
-        uploadingNewPosts(true,postsNow)
-    }
+   if (!onFav) {
+       if (checkRadios() === 0) {
+           clearFeed();
+           searchBiggestRating();
+       } else if (checkRadios() === 1) {
+           clearFeed();
+           searchBiggestPrice();
+       } else {
+           clearFeed();
+           postsNow= shuffle(postsNow);
+       }
+   }
+   else {
+       if (checkRadios() === 0) {
+           clearFeed();
+           searchBiggestRating();
+       } else if (checkRadios() === 1) {
+           clearFeed();
+           searchBiggestPrice();
+       } else {
+           clearFeed();
+           postsNow= shuffle(postsNow);
+       }
+   }
 }
-function showCity() {
-    const city =elem('searchCity').value;
-    postsNow=[];
-    clearFeed();
-    switch (city) {
-        case 'Mozgow':
-            sortByCity('Moscow');
-            break;
-        case 'Peeter':
-            sortByCity('Peter');
-            break;
-        case 'FAQU':
-            sortByCity('Chota');
-            break;
-        case 'Any':
-            postsNow=posts;
-            break
 
-    }
-    postNumb=0;
-    console.log(postsNow);
-    uploadingNewPosts(true, postsNow)
-}
 function sortByCity(city) {
-    for (let x=0;x<posts.length ;x++) {
-        console.log(posts[x].city)
-        if (posts[x].city===city){
-            postsNow.push(posts[x])
+    const newPosts= [];
+    if (!onFav) {
+        if (city !== 'Any') {
+            for (let x = 0; x < posts.length; x++) {
+                if (posts[x].city === city) {
+                    newPosts.push(postsNow[x])
+                }
+            }
+        } else {
+            for (let x = 0; x < posts.length; x++) {
+                newPosts.push(postsNow[x])
+            }
         }
     }
+    else {
+        if (city !== 'Any') {
+            for (let x = 0; x < favPosts.length; x++) {
+                if (favPosts[x].city === city) {
+                    newPosts.push(postsNow[x])
+                }
+            }
+        } else {
+            for (let x = 0; x < postsNow.length; x++) {
+                newPosts.push(postsNow[x])
+            }
+        }
+    }
+    postsNow=newPosts
 }
 
 function checkRadios() {
@@ -104,8 +118,8 @@ function compareByPrice(a, b) {
 
     return comparison;
 }
-function shuffle(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
+function shuffle(posts) {
+    let currentIndex = posts.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
@@ -115,10 +129,54 @@ function shuffle(array) {
         currentIndex -= 1;
 
         // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        temporaryValue = posts[currentIndex];
+        posts[currentIndex] = posts[randomIndex];
+        posts[randomIndex] = temporaryValue;
     }
 
-    return array;
+    return posts;
+}
+
+function takeItemsByType(type,fromPosts) {
+    const newPosts =[];
+    for (let x=0;x<fromPosts.length ;x++) {
+        if (fromPosts[x].type === type){
+            newPosts.push(fromPosts[x])
+        }
+    }
+    postsNow=newPosts
+}
+function search() {
+    if (onFav){
+        postsNow=favPosts
+    }
+    else {
+        postsNow=posts
+    }
+    const city = elem('searchCity').value;
+    const type = elem('searchType').value;
+    const sort = function() {
+        if ( elem('rating').checked){
+            return 'rating'
+        }
+        else if (elem('price').checked){
+            return 'price'
+        }
+        else {
+            return 'date'
+        }
+    };
+    console.log(city+' '+type+' '+sort());
+    sortByCity(city);
+//    console.log(postsNow);
+    newSort();
+//    console.log(postsNow);
+    if (type !== '') {
+        takeItemsByType(type, postsNow);
+    }
+//    console.log(postsNow);
+    clearFeed();
+    postNumb=0;
+    uploadingNewPosts(true,postsNow)
+
 }

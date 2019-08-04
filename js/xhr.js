@@ -126,6 +126,5 @@ geocoder.geocode(
 window.onscroll = function(ev) {
     if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight)&&!onFav) {
         uploadingNewPosts(false,postsNow)
-
     }
 };
