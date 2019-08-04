@@ -14,19 +14,22 @@ function newSort() {
         clearFeed();
         searchBiggestRating();
         postNumb=0;
-        uploadingNewPosts(true)
+        postsNow=posts;
+        uploadingNewPosts(true,postsNow)
     }
     else if (checkRadios() === 1){
         clearFeed();
         searchBiggestPrice();
         postNumb=0;
-        uploadingNewPosts(true)
+        postsNow=posts;
+        uploadingNewPosts(true,postsNow)
     }
     else {
         clearFeed();
         shuffle(posts);
+        postsNow=posts;
         postNumb=0;
-        uploadingNewPosts(true)
+        uploadingNewPosts(true,postsNow)
     }
 }
 
@@ -62,9 +65,9 @@ function compareByRating(a, b) {
 
 }
 function compareByPrice(a, b) {
-    const genreA = a.price;
-    const genreB = b.price;
-
+    const genreA = parseInt(a.price.substr(0,a.price.length-1).replace(' ',''));
+    const genreB = parseInt(b.price.substr(0,b.price.length-1).replace(' ',''));;
+    console.log(a.price +' >'+ b.price+' '+(a.price >b.price))
     let comparison = 0;
 
         if (genreA > genreB) {

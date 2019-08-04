@@ -16,25 +16,18 @@
     <div id="header">
       <navbar id="navbar">
         <div id="menu">
-            <a onclick="{clearFeed();postNumb=0;uploadingNewPosts()}"> <h4 id='feed' class="navbarContent"
-                    onmouseover="changeColor('feed','red')"
-                    onmouseout="changeColor('feed',clr)">
+            <a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,postsNow)}"> <h4 id='feed' class="navbarContent">
                     Объявления</h4></a>
             <a><h4 class="navbarContent"
-                    id='shop'
-                    onmouseover='changeColor("shop","red")'
-                    onmouseout= ' changeColor("shop",clr)'>
+                    id='shop'>
                     Магазины
                 </h4></a>
             <a><h4 class="navbarContent"
-                        id='business'
-                        onmouseover="changeColor('business','red')"
-                        onmouseout= "changeColor('business',clr)">
+                        id='business'>
                     Бизнес</h4></a>
             <a><h4  class="navbarContent"
-                     id='help'
-                     onmouseover="changeColor('help','red')"
-                     onmouseout= "changeColor('help',clr)">Помощь
+                     id='help'>
+                Помощь
                 </h4></a>
              <div class="switch-wrap-menu"><span id="ThemeMenu">Day</span>
                     <input onclick="ChangeTheme()" class="switch" id="check" type="checkbox"><label for="check">&nbsp;</label>
@@ -53,7 +46,7 @@
             <button class="flat toggleButton"> Вход</button>
 
             <ul class="menu">
-                    <li><a onclick="{clearFeed();postNumb=0;uploadingNewPosts()}">Объявления </a></li>
+                    <li><a onclick="{clearFeed();postNumb=0;uploadingNewPosts(true,postsNow)}">Объявления </a></li>
                     <li><a >Магазин</a></li>
                     <li><a >Бизнес</a></li>
                     <li><a >Помощь</a></li>

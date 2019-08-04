@@ -1,9 +1,11 @@
-
+let postsNow=[];
+let posts = [];
 Array.prototype.insert = function(index) {
     this.splice.apply(this, [index, 0].concat(
         Array.prototype.slice.call(arguments, 1)));
     return this;
 };
+
 Object.defineProperty(String.prototype, "reverse", {
     get: function() {
         let arr = this.split('');

@@ -11,14 +11,16 @@ function toPost(data, exist) {
 
 }
 
-function fetching() {
-    fetch("https://avito.dump.academy/products/")
+async function fetching() {
+   await fetch("https://avito.dump.academy/products/")
         .then(response=>{
             return response.json()
         })
         .then(function (defs) {
+            console.log(defs.data);
             for (let i=0;i<defs.data.length;i++) {
                 if (defs.data[i].price!==undefined) {
+
                     posts.push(defs.data[i])
                 }
             }
@@ -28,15 +30,14 @@ function fetching() {
         // Отправить на сервер для метрики
         );
 }
-function uploadingNewPosts(exist) {
+function uploadingNewPosts(exist,posts) {
     let x=postNumb;
     for (x; x<postNumb+10 && x<posts.length  ;x++) {
         toPost(posts[x],exist)
     }
     postNumb=x
 }
-fetching();
-searchForSellers();
+fetching().then(searchForSellers);
 async function searchForSellers(){
     const authors  =  await fetch("https://avito.dump.academy/sellers/")
             .then(response => {
@@ -61,7 +62,7 @@ async function searchForSellers(){
             }
         }
     }
-    uploadingNewPosts()
+    uploadingNewPosts(false,posts)
 }
 function normalizePrices(x){
     posts[x].price = priceOf(posts[x].price)
@@ -103,9 +104,10 @@ geocoder.geocode(
     }
 );
 */
+
 window.onscroll = function(ev) {
     if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight)&&!onFav) {
-        uploadingNewPosts()
+        uploadingNewPosts(false,postsNow)
 
     }
 };

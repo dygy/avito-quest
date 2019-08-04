@@ -13,6 +13,7 @@ navbar{
     z-index: 5;
     border-bottom: 1px #000000 dashed ;
 }
+
 #auth{
     width: 300px;!important;
 }
@@ -28,17 +29,30 @@ navbar{
     float: left;
     font-family: Segoe UI, serif;
 }
+
+#feed:hover{
+    color: red;
+}
+#business:hover{
+    color: red;
+}
+#shop:hover{
+    color: red;
+}
+#help:hover{
+    color: red;
+}
 #feed{
     width: 110px;
 }
 #business{
-    width: 70px;
+    width: 60px;
 }
 #shop{
     width: 90px;
 }
 #help{
-    width: 10px;
+    width: 70px;
 }
 * {
     box-sizing: border-box;

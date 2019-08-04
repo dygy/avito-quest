@@ -10,12 +10,7 @@ if (myStorage.getItem('favorIndex')===undefined||myStorage.getItem('favorIndex')
 console.log(myStorage);
 const flexbox = document.getElementsByClassName('flexbox')[0];
 let clr;
-const changeColor = (id, color) =>{
-    if (color ==='red') {
-        clr = document.getElementById(id).style.color;
-    }
-    document.getElementById(id).style.color = color
-};
+
 
 function replaceStorage(isLiked) {
     if (favorIndex>1){
@@ -108,7 +103,7 @@ let postNum =1;
 //myStorage.clear();
 
 
-const posts = [];
+
 const priceOf=(price)=>{
     price=price.toString().reverse;
     price=price.split('');
@@ -139,6 +134,7 @@ let createPost = (item)=> {
     post.isLiked=item.isLiked;
     post.type=item.type;
     date = null;
+    postsNow = posts;
     publishPost(post)
 };
 let createNewPost = (item)=> {
@@ -160,6 +156,7 @@ let createNewPost = (item)=> {
     }
     post.type=item.category;
     date = null;
+    postsNow = posts;
     posts.splice(posts.findIndex(x=>x.id===post.id),1,post);
     publishPost(post)
 };
