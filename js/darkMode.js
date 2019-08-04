@@ -37,7 +37,7 @@ function toDark() {
     document.body.style.backgroundColor ='#323232';
     elem('navbar').style.backgroundColor='#412a3a';
     elem('dropdown').style.backgroundColor='#d3af7b';
-    elem('navtoggle').style.backgroundColor='#d3af7b';
+    elem('nav-toggle').style.backgroundColor='#d3af7b';
     elem('navbar').style.borderColor='#d6dbe9';
     elem('navtoggle').style.borderColor='#ffffff';
     elem('feed').style.color='#d6dbe9';
