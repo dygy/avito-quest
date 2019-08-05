@@ -1,6 +1,6 @@
 .search {
     left: 6px;
-    width: 99%;
+    width: 99.99%;
     position: relative;
     display: flex;
 }
@@ -16,7 +16,7 @@
     color: #9DBFAF;
 }
 #searchType {
-    width: 22%;
+    width: 25%;
     border: 3px solid #00B4CC;
     border-right: none;
     border-radius: 5px 0 0 5px;
@@ -40,7 +40,7 @@
 
 }
 #searchCity {
-    width: 23%;
+    width: 25%;
     border: 3px solid #00B4CC;
     border-right: none;
     border-radius: 5px 0 0 5px;
@@ -92,6 +92,7 @@ a{
     border-radius: 0.125rem;
     box-shadow: 0 2px 4px hsla(220, 10%, 40%, 0.4), 0 6px 20px hsla(220, 10%, 40%, 0.3);
     background-color: #fff;
+    width: 8rem!important;
 }
 
 .suggestions > li {
@@ -279,7 +280,25 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
-
+.wrap{
+    width: 100%;
+}
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
+}
+@media (max-width: 317px) {
+
+    .search{
+        width: 100%;
+        left: 1px;
+    }
+    .wrap{
+        width: 108%;!important;
+    }
+}
+@media (max-width: 260px) {
+    .wrap{
+        width: 150%;!important;
+    }
+
 }

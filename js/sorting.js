@@ -155,6 +155,7 @@ function search() {
     }
     const city = elem('searchCity').value;
     const type = elem('searchType').value;
+    const name = elem('searchTerm').value;
     const sort = function() {
         if ( elem('rating').checked){
             return 'rating'
@@ -166,7 +167,10 @@ function search() {
             return 'date'
         }
     };
-    console.log(city+' '+type+' '+sort());
+    console.log(city+' '+type+' '+sort()+' '+ name);
+    if (name !==''){
+        searchByName(name)
+    }
     sortByCity(city);
 //    console.log(postsNow);
     newSort();
@@ -179,4 +183,7 @@ function search() {
     postNumb=0;
     uploadingNewPosts(true,postsNow)
 
+}
+function searchByName(name) {
+    
 }

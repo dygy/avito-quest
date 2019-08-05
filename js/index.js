@@ -70,7 +70,7 @@ const publishPost=(post)=>{
     const priceNode = document.createElement('strong');
     priceNode.innerText = post.price;
     const nameNode = document.createElement('a');
-    nameNode.innerText = post.title;
+    nameNode.innerText = post.title+' ('+post.pictures.length+' фото)';
     nameNode.href = './product/'+post.id;
     const cityNode = document.createElement('span');
     cityNode.innerText = post.city;

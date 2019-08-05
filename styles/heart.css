@@ -105,7 +105,8 @@
 
 @media (max-width: 315px) {
     .heart {
-        z-index: 3;
+        top: 20%;
+        z-index: 6;
         left: 50%;
         background-color: #545454;
         display: inline-block;
@@ -134,6 +135,11 @@
     .heart:after {
         left: 10px;
         top: 0;
+    }
+}
+@media (max-width: 259px) {
+    .heart{
+        top: 15%;
     }
 }
 .liked{
