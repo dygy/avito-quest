@@ -1,7 +1,6 @@
 function searchBiggestPrice() {
     for (let x=0;x<postsNow.length;x++){
         if (!postsNow[x].hasPrice){
-            console.log(postsNow[x]);
             postsNow.splice(x,1);
             x--;
         }
@@ -14,7 +13,6 @@ function searchBiggestPrice() {
         for (let x=0;x<postsNow.length;x++) {
             const price = parseInt(postsNow[x].price.substr(0,postsNow[x].price.length-1).replace(/ /g,''));
             if (price >= fromPrice && price <= toPrice){
-                console.log(price+ ' '+fromPrice+' '+toPrice);
                 newPosts.push(postsNow[x])
             }
         }
@@ -174,17 +172,15 @@ function search() {
         }
     };
     console.log(city+' '+type+' '+sort()+' '+ name);
-    if (name !==''){
-        searchByName(name)
-    }
+
     sortByCity(city);
-//    console.log(postsNow);
+    if (name !==''){
+        postsNow=  searchByName(name)
+    }
     newSort();
-//    console.log(postsNow);
     if (type !== '') {
         takeItemsByType(type, postsNow);
     }
-//    console.log(postsNow);
     clearFeed();
     postNumb=0;
     if (postsNow.length>0) {
@@ -195,5 +191,7 @@ function search() {
     }
 }
 function searchByName(name) {
-
+    return  postsNow.filter(function (elem) {
+            return (elem.title.indexOf(name.toLowerCase()) > -1||elem.title.indexOf(name.toUpperCase()) > -1||elem.title.indexOf(name) > -1);
+    });
 }

@@ -106,7 +106,6 @@ function highlightPrev() {
 
 // runs on every keypress within the autocomplete
 function handleKeyDown(event) {
- //   console.log(METROS);
     switch (event.key) {
         case "Escape":
             closeSuggestions();

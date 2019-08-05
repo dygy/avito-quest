@@ -4,7 +4,6 @@ async function fetching() {
             return response.json()
         })
         .then(function (defs) {
-        //    console.log(defs.data);
             for (let i=0;i<defs.data.length;i++) {
                 const post = defs.data[i];
                 if (defs.data[i].price!==undefined) {
@@ -15,7 +14,6 @@ async function fetching() {
                     const post = defs.data[i];
                     post.price =post.rooms+' Комнаты';
                     post.hasPrice = false
-                    console.log(defs.data[i])
                 }
                 post.isLiked=false;
                 const random = Math.random()*3;
@@ -51,8 +49,10 @@ async function fetching() {
 }
 function uploadingNewPosts(exist,posts) {
     let x=postNumb;
-    for (x; x<postNumb+10 && x<posts.length  ;x++) {
-        publishPost(posts[x])
+    for (x; x<posts.length  ;x++) {
+        if (x<postNumb+10) {
+            publishPost(posts[x])
+        }
     }
     postNumb=x
 }
@@ -63,7 +63,6 @@ async function searchForSellers(){
                 return response.json()
             })
             .then( function (defs) {
-          //      console.log(defs.data);
                 return defs.data;
             })
             .catch(function (error) {
