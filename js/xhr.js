@@ -1,13 +1,3 @@
-
-function toPost(data, exist) {
-//    console.log(data);
-//НЕ ЗАБЫТЬ ОБРАБОТАТЬ ОСТАЛЬНЫЕ ОБЪЯВЛЕНИЯ
-    if (data.price!== undefined){
-        publishPost(data)
-    }
-
-}
-
 async function fetching() {
    await fetch("https://avito.dump.academy/products/")
         .then(response=>{
@@ -19,11 +9,12 @@ async function fetching() {
                 const post = defs.data[i];
                 if (defs.data[i].price!==undefined) {
                     post.price =priceOf(post.price);
+                    post.hasPrice =true
                 }
                 else {
                     const post = defs.data[i];
                     post.price =post.rooms+' Комнаты';
-
+                    post.hasPrice = false
                     console.log(defs.data[i])
                 }
                 post.isLiked=false;
@@ -61,7 +52,7 @@ async function fetching() {
 function uploadingNewPosts(exist,posts) {
     let x=postNumb;
     for (x; x<postNumb+10 && x<posts.length  ;x++) {
-        toPost(posts[x],exist)
+        publishPost(posts[x])
     }
     postNumb=x
 }

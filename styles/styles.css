@@ -181,3 +181,9 @@ a {
     color: #000; /* for browsers that don't support 'inherit' as a color value */
     color: inherit
 }
+#noPosts{
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    background: #484848;
+}

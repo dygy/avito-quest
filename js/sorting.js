@@ -1,8 +1,14 @@
 function searchBiggestPrice() {
+    for (let x=0;x<postsNow.length;x++){
+        if (!postsNow[x].hasPrice){
+            console.log(postsNow[x]);
+            postsNow.splice(x,1);
+            x--;
+        }
+    }
     postsNow.sort(compareByPrice);
     const fromPrice= parseInt(elem('fromPrice' ).value);
     const toPrice=   parseInt(elem('toPrice' ).value);
-    console.log( fromPrice);
     if (typeof fromPrice === "number" && typeof toPrice === "number" && !isNaN(toPrice)&&!isNaN(fromPrice)){
         const newPosts=[];
         for (let x=0;x<postsNow.length;x++) {
@@ -181,9 +187,13 @@ function search() {
 //    console.log(postsNow);
     clearFeed();
     postNumb=0;
-    uploadingNewPosts(true,postsNow)
-
+    if (postsNow.length>0) {
+        uploadingNewPosts(true, postsNow)
+    }
+    else {
+        elem('noPosts').className=''
+    }
 }
 function searchByName(name) {
-    
+
 }
