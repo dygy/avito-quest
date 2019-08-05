@@ -16,35 +16,41 @@ async function fetching() {
         .then(function (defs) {
         //    console.log(defs.data);
             for (let i=0;i<defs.data.length;i++) {
+                const post = defs.data[i];
                 if (defs.data[i].price!==undefined) {
-                    const post = defs.data[i];
                     post.price =priceOf(post.price);
-                    post.isLiked=false;
-                    const random = Math.random()*3;
-                    if (random<=1){
-                        post.city = 'Moscow';
-
-                    }
-                    else if (random <= 2) {
-                        post.city = 'Peter';
-                    }
-                    else {
-                        post.city = 'Chota';
-                    }
-                    post.photo = post.pictures[0];
-                    let date = new Date();
-                    if (post.date === ''||post.date === undefined) {
-                        if (date.getMinutes().toString().length === 2) {
-                            post.date = 'Сегодня ' + date.getHours() + ' : ' + date.getMinutes();
-                        } else {
-                            post.date = 'Сегодня ' + date.getHours() + ' :  0' + date.getMinutes();
-                        }
-                    }
-                    post.type=post.category;
-                    date = null;
-                    postsNow = posts;
-                    posts.push(defs.data[i])
                 }
+                else {
+                    const post = defs.data[i];
+                    post.price =post.rooms+' Комнаты';
+
+                    console.log(defs.data[i])
+                }
+                post.isLiked=false;
+                const random = Math.random()*3;
+                if (random<=1){
+                    post.city = 'Moscow';
+
+                }
+                else if (random <= 2) {
+                    post.city = 'Peter';
+                }
+                else {
+                    post.city = 'Chota';
+                }
+                post.photo = post.pictures[0];
+                let date = new Date();
+                if (post.date === ''||post.date === undefined) {
+                    if (date.getMinutes().toString().length === 2) {
+                        post.date = 'Сегодня ' + date.getHours() + ' : ' + date.getMinutes();
+                    } else {
+                        post.date = 'Сегодня ' + date.getHours() + ' :  0' + date.getMinutes();
+                    }
+                }
+                post.type=post.category;
+                date = null;
+                postsNow = posts;
+                posts.push(defs.data[i]);
             }
 
         })

@@ -28,6 +28,7 @@ function changeMetros(){
     }
 }
 
+
 // get our DOM nodes
 const autocomplete = document.getElementById("autocomplete");
 const searchInput = document.getElementById("searchMetro");
