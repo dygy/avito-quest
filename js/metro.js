@@ -2,7 +2,7 @@ function changeMetros(){
  // console.log(elem('searchCity').value);
     const city = elem('searchCity').value;
     switch (city) {
-        case 'Mozgow':
+        case 'Moscow':
             METROS=[];
             Metros=[];
             METROS.push('Наманная', 'Ненаманнная', "Такая себе", "Четкая", "Гендерфлюидная");
@@ -10,7 +10,7 @@ function changeMetros(){
             METROS.sort();
             elem('searchMetro').placeholder = 'Метро';
             break;
-        case 'Peeter':
+        case 'Peter':
             METROS=[];
             Metros=[];
             METROS.push('Наркологическая', 'Улица имени 63 Гендера');
@@ -20,7 +20,7 @@ function changeMetros(){
             elem('searchMetro').placeholder = 'Метро';
             break;
 
-        case 'FAQU':
+        case 'Chota':
             METROS = [];
             Metros = [];
             elem('searchMetro').placeholder = 'Тут метра не будет';
