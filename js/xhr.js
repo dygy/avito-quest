@@ -50,11 +50,13 @@ async function fetching() {
 function uploadingNewPosts(exist,posts) {
     let x=postNumb;
     for (x; x<posts.length  ;x++) {
+        console.log(x)
         if (x<postNumb+10) {
+
             publishPost(posts[x])
         }
     }
-    postNumb=x
+    postNumb=postNumb+10;
 }
 fetching().then(searchForSellers);
 async function searchForSellers(){
